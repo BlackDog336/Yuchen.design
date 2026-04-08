@@ -1,14 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import DogVideo from "./DogVideo";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden px-8 pb-16 pt-32 lg:px-16">
-      <DogVideo />
+    <footer className="px-8 pb-16 pt-32 lg:px-16">
       {/* Big CTA */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
