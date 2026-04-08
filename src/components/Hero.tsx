@@ -1,12 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const SunScene = dynamic(() => import("./SunScene"), { ssr: false });
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center px-8 pt-[240px] pb-[120px] lg:px-16">
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 pt-[240px] pb-[120px] lg:px-16">
+      <SunScene />
       <div className="flex w-full max-w-[900px] flex-col items-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

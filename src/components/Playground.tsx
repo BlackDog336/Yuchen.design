@@ -83,20 +83,20 @@ function PlaygroundCard({ project, index }: { project: Project; index: number })
         </h3>
 
         {/* Description – hidden by default, fades in on card hover */}
-        <p className="mt-0 max-h-0 overflow-hidden font-sans text-[15px] leading-[1.6] tracking-[-0.15px] text-white/80 opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-[200px] group-hover:opacity-100">
+        <p className="mt-0 max-h-0 overflow-hidden font-sans text-[19px] leading-[1.6] tracking-[-0.15px] text-white opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-[200px] group-hover:opacity-100">
           {project.description}
         </p>
 
         {/* Button – hidden by default, fades in on card hover */}
         <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out [transition-delay:80ms] group-hover:mt-5 group-hover:max-h-[60px] group-hover:opacity-100">
-          <span className="group/btn relative inline-flex items-center overflow-hidden rounded-full border-2 border-[#1e2a78] bg-[#1e2a78] py-[5px] pl-6 pr-[5px] transition-[border-color] duration-600 ease-out hover:border-[#ffb347]">
+          <span className="group/btn relative inline-flex items-center overflow-hidden rounded-full border-2 border-[#1e2a78] bg-[#1e2a78] py-[3px] pl-5 pr-[3px] transition-[border-color] duration-600 ease-out hover:border-[#ffb347]">
             {/* White ball that expands to fill, then turns orange */}
-            <span className="absolute right-[5px] top-1/2 h-[38px] w-[38px] -translate-y-1/2 rounded-full bg-white transition-all duration-500 ease-out group-hover/btn:right-1/2 group-hover/btn:h-[300%] group-hover/btn:w-[300%] group-hover/btn:translate-x-1/2 group-hover/btn:bg-accent" />
-            <span className="relative z-10 pr-3 font-sans text-[15px] font-medium text-white">
+            <span className="absolute right-[3px] top-1/2 h-[32px] w-[32px] -translate-y-1/2 rounded-full bg-white transition-all duration-500 ease-out group-hover/btn:right-1/2 group-hover/btn:h-[300%] group-hover/btn:w-[300%] group-hover/btn:translate-x-1/2 group-hover/btn:bg-accent" />
+            <span className="relative z-10 pr-2.5 font-sans text-[14px] font-medium text-white">
               Take a look
             </span>
-            <span className="relative z-10 flex h-[38px] w-[38px] items-center justify-center">
-              <span className="text-[17px] text-[#1e2a78] transition-all duration-500 ease-out group-hover/btn:rotate-[360deg] group-hover/btn:text-white">&rarr;</span>
+            <span className="relative z-10 flex h-[32px] w-[32px] items-center justify-center">
+              <span className="text-[15px] text-[#1e2a78] transition-all duration-500 ease-out group-hover/btn:rotate-[360deg] group-hover/btn:text-white">&rarr;</span>
             </span>
           </span>
         </div>
@@ -125,7 +125,7 @@ export default function Playground() {
           <h2 className="font-serif text-[64px] font-normal leading-[1.2] tracking-[-1px] text-white">
             Playground
           </h2>
-          <p className="mx-auto mt-3 max-w-[600px] font-sans text-[18px] leading-[1.6] tracking-[-0.18px] text-white/70">
+          <p className="mx-auto mt-3 font-sans whitespace-nowrap text-[22px] leading-[1.6] tracking-[-0.18px] text-white">
             Vibe Coding Projects, XR, Games, Textiles, 3D Arts, Programming Arts etc.
           </p>
         </motion.div>
