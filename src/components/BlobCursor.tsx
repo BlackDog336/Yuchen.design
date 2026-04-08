@@ -37,10 +37,17 @@ export default function BlobCursor() {
       const style = getComputedStyle(explicitPill);
       return { mode: "pill", rect, borderRadius: style.borderRadius || "9999px" };
     }
+    const explicitDog = target.closest("[data-cursor='dog']") as HTMLElement | null;
+    if (explicitDog) {
+      // Arrow pointing towards the bone
+      const bone = document.querySelector("[data-cursor='bone']") as HTMLElement | null;
+      arrowTargetRef.current = bone;
+      return { mode: "arrow", rect: null, borderRadius: "" };
+    }
     const explicitBone = target.closest("[data-cursor='bone']") as HTMLElement | null;
     if (explicitBone) {
       // Arrow pointing towards the dog
-      const dog = document.querySelector(".footer-dog") as HTMLElement | null;
+      const dog = document.querySelector("[data-cursor='dog']") as HTMLElement | null;
       arrowTargetRef.current = dog;
       return { mode: "arrow", rect: null, borderRadius: "" };
     }

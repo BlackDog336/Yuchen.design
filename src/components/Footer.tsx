@@ -23,7 +23,7 @@ export default function Footer() {
 
   const handleDragEnd = useCallback(() => {
     setBoneDragging(false);
-    const dogEl = document.querySelector("[data-cursor='bone']");
+    const dogEl = document.querySelector("[data-cursor='dog']");
     if (dogEl) {
       const rect = dogEl.getBoundingClientRect();
       const { x, y } = pointerPos.current;
@@ -54,8 +54,8 @@ export default function Footer() {
       >
 <a
           href="mailto:yuchen666333@gmail.com"
-          onMouseEnter={() => window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: true }))}
-          onMouseLeave={() => window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: false }))}
+          onMouseEnter={() => { if (!boneDragging) window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: 0.3 })); }}
+          onMouseLeave={() => { if (!boneDragging) window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: 0 })); }}
           className="group mt-6 inline-flex items-center gap-4 font-serif text-[48px] leading-[1.2] tracking-[-1px] text-white md:text-[72px]"
         >
           <span>Get in Touch</span>
@@ -129,14 +129,18 @@ export default function Footer() {
           dragSnapToOrigin
           onDragStart={() => {
             setBoneDragging(true);
-            window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: true }));
+          }}
+          onDrag={() => {
+            const { x } = pointerPos.current;
+            const progress = Math.max(0, Math.min(1, x / window.innerWidth));
+            window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: progress }));
           }}
           onDragEnd={() => {
-            window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: false }));
+            window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: 0 }));
             handleDragEnd();
           }}
-          onHoverStart={() => window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: true }))}
-          onHoverEnd={() => { if (!boneDragging) window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: false })); }}
+          onHoverStart={() => window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: 0.3 }))}
+          onHoverEnd={() => { if (!boneDragging) window.dispatchEvent(new CustomEvent("dog-eyes-scale", { detail: 0 })); }}
           whileDrag={{ scale: 1.2 }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}

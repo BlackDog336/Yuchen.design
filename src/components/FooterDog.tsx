@@ -134,7 +134,13 @@ export default function FooterDog() {
 
   useEffect(() => {
     const handleEyeScale = (e: Event) => {
-      setEyeScale((e as CustomEvent).detail ? 1.5 : 1);
+      const progress = (e as CustomEvent).detail as number; // 0 to 1
+      // Scale from 1.0 (left) to 2.2 (right), with a minimum bump of 1.3 when any value > 0
+      if (progress <= 0) {
+        setEyeScale(1);
+      } else {
+        setEyeScale(1.3 + progress * 0.5);
+      }
     };
     const handleBoneDrop = () => {
       spawnParticles();
@@ -177,7 +183,7 @@ export default function FooterDog() {
       viewport={{ once: true }}
       transition={{ duration: 1, delay: 0.3, ease }}
       style={{ x: springX, y: springY }}
-      data-cursor="bone"
+      data-cursor="dog"
       className="footer-dog absolute right-[-60px] bottom-[-20px] z-[2] hidden w-[260px] -rotate-[25deg] overflow-hidden lg:block"
     >
       <img
