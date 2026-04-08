@@ -8,6 +8,8 @@ interface TransitionLinkProps
   href: string;
   children: React.ReactNode;
   className?: string;
+  /** Overlay color for the spotlight transition (default: "#fff") */
+  spotlightColor?: string;
 }
 
 export default function TransitionLink({
@@ -15,6 +17,7 @@ export default function TransitionLink({
   children,
   className,
   onClick,
+  spotlightColor,
   ...rest
 }: TransitionLinkProps) {
   const { start, isTransitioning } = useSpotlight();
@@ -24,9 +27,9 @@ export default function TransitionLink({
       e.preventDefault();
       if (isTransitioning) return;
       onClick?.(e);
-      start(href, e.clientX, e.clientY);
+      start(href, e.clientX, e.clientY, spotlightColor);
     },
-    [href, start, isTransitioning, onClick]
+    [href, start, isTransitioning, onClick, spotlightColor]
   );
 
   return (

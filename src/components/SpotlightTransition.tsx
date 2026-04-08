@@ -11,7 +11,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 interface SpotlightContextValue {
   /** Trigger the spotlight transition from (x, y) to the given href */
-  start: (href: string, x: number, y: number) => void;
+  start: (href: string, x: number, y: number, color?: string) => void;
   /** Whether a transition is currently in progress */
   isTransitioning: boolean;
 }
@@ -40,7 +40,7 @@ export default function SpotlightTransition({
   const lockRef = useRef(false);
 
   const start = useCallback(
-    (href: string, x: number, y: number) => {
+    (href: string, x: number, y: number, color?: string) => {
       // Don't transition to the same page, and don't double-fire
       if (lockRef.current || href === pathname) return;
       lockRef.current = true;
@@ -52,6 +52,9 @@ export default function SpotlightTransition({
         setIsTransitioning(false);
         return;
       }
+
+      // Set overlay color
+      overlay.style.backgroundColor = color || "#fff";
 
       // Reset overlay state
       overlay.style.opacity = "1";
@@ -65,8 +68,9 @@ export default function SpotlightTransition({
         "clip-path 600ms cubic-bezier(0.16, 1, 0.3, 1)";
       overlay.style.clipPath = `circle(150vmax at ${x}px ${y}px)`;
 
-      // At the midpoint, navigate
+      // At the midpoint, navigate and scroll to top
       const navTimer = setTimeout(() => {
+        window.scrollTo(0, 0);
         router.push(href);
       }, 300);
 

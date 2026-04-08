@@ -23,8 +23,21 @@ export default function Header() {
         transition={{ duration: 0.6, ease, delay: 0.2 }}
         className="relative flex items-center justify-between px-6 py-5 sm:px-10 lg:px-14"
       >
-        <a href="#" className="font-serif text-[22px] tracking-[-0.5px] text-white sm:text-[26px]">
+        <a href="#" className="flex items-center gap-2 font-serif text-[22px] tracking-[-0.5px] text-white sm:text-[26px]">
           Yuchen Zhang
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="shrink-0"
+          >
+            <path
+              d="M8 0L9.69 6.31L16 8L9.69 9.69L8 16L6.31 9.69L0 8L6.31 6.31L8 0Z"
+              fill="currentColor"
+            />
+          </svg>
         </a>
 
         <a

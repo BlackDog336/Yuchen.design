@@ -9,11 +9,11 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 const words = ["I build clear systems", "and polished experiences,", "turning complexity into", "simple, shippable flows."];
 
 const floatingSkills = [
-  { label: "Product Design", radius: 230, duration: 30, startDelay: -27.5, bounceDelay: 0 },
-  { label: "Design Systems", radius: 260, duration: 34, startDelay: -2.8, bounceDelay: 0.8 },
-  { label: "Prototyping", radius: 240, duration: 28, startDelay: -9.3, bounceDelay: 1.2 },
-  { label: "User Research", radius: 250, duration: 32, startDelay: -18.7, bounceDelay: 0.4 },
-  { label: "AI-first UX", radius: 225, duration: 26, startDelay: -20.2, bounceDelay: 1.6 },
+  { label: "Product Design", radius: 380, duration: 18, startDelay: 0, bounceDelay: 0 },
+  { label: "Design Systems", radius: 420, duration: 22, startDelay: -8, bounceDelay: 0.8 },
+  { label: "Prototyping", radius: 390, duration: 16, startDelay: -5, bounceDelay: 1.2 },
+  { label: "User Research", radius: 410, duration: 20, startDelay: -12, bounceDelay: 0.4 },
+  { label: "AI-first UX", radius: 370, duration: 24, startDelay: -15, bounceDelay: 1.6 },
 ];
 
 export default function Hero() {
@@ -78,7 +78,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4, ease }}
-        className="absolute left-1/2 top-0 z-[2] -translate-x-1/2 -translate-y-3/4"
+        className="absolute left-1/2 top-0 z-[6] -translate-x-1/2 -translate-y-3/4"
         style={{ width: "50vw", height: "50vw" }}
       >
         {/* Pulsing warm glow */}
@@ -114,14 +114,14 @@ export default function Hero() {
             <div
               style={{
                 transformOrigin: "0 0",
-                animation: `orbit-spin ${skill.duration}s linear infinite`,
+                animation: `orbit-swing ${skill.duration}s ease-in-out infinite`,
                 animationDelay: `${skill.startDelay}s`,
               }}
             >
               <div style={{ transform: `translateX(${skill.radius}px)` }}>
                 <div
                   style={{
-                    animation: `orbit-spin ${skill.duration}s linear infinite reverse`,
+                    animation: `orbit-swing-counter ${skill.duration}s ease-in-out infinite`,
                     animationDelay: `${skill.startDelay}s`,
                   }}
                 >

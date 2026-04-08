@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import TransitionLink from "./TransitionLink";
 
 const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -18,13 +19,14 @@ export default function CaseStudyFooter() {
           <p className="font-mono text-sm uppercase tracking-[0.15em] text-gray-300">
             Thanks for reading
           </p>
-          <a
+          <TransitionLink
             href="/"
+            spotlightColor="#000"
             className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-8 py-3 font-mono text-[14px] tracking-[0.05em] text-gray-500 transition-all hover:border-gray-300 hover:bg-gray-100 hover:text-gray-900"
           >
             View More Projects
             <span>&rarr;</span>
-          </a>
+          </TransitionLink>
         </motion.div>
       </div>
     </section>

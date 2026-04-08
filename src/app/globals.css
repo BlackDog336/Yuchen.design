@@ -106,21 +106,15 @@ a {
 /* Film grain noise */
 @keyframes grain {
   0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-2%, -3%); }
-  20% { transform: translate(3%, 1%); }
-  30% { transform: translate(-1%, 2%); }
-  40% { transform: translate(2%, -2%); }
-  50% { transform: translate(-3%, 3%); }
-  60% { transform: translate(1%, -1%); }
-  70% { transform: translate(-2%, 2%); }
-  80% { transform: translate(3%, -3%); }
-  90% { transform: translate(-1%, 1%); }
+  25% { transform: translate(-0.5%, -0.5%); }
+  50% { transform: translate(0.5%, 0.5%); }
+  75% { transform: translate(-0.5%, 0.5%); }
 }
 .animate-grain {
   background-image: url("/images/grain-texture.png");
   background-size: 256px 256px;
   background-repeat: repeat;
-  animation: grain 0.8s steps(6) infinite;
+  animation: grain 2s steps(4) infinite;
 }
 
 /* Playground button hover fill */
@@ -202,7 +196,16 @@ a {
 }
 .animate-float-pill { animation: float-pill 4s ease-in-out infinite; }
 
-@keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes orbit-swing {
+  0% { transform: rotate(20deg); }
+  90% { transform: rotate(160deg); }
+  90.001% { transform: rotate(20deg); }
+  100% { transform: rotate(20deg); }
+}
+
+@keyframes orbit-swing-counter {
+  0% { transform: rotate(-20deg); }
+  90% { transform: rotate(-160deg); }
+  90.001% { transform: rotate(-20deg); }
+  100% { transform: rotate(-20deg); }
 }
