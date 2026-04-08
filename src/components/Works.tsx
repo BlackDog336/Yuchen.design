@@ -111,48 +111,63 @@ export default function Works() {
                 className="group block"
               >
                 <div className={`flex flex-col lg:flex-row lg:items-center lg:gap-16 ${imageFirst ? "" : "lg:flex-row-reverse"}`}>
-                  {/* Image */}
-                  <div className="overflow-hidden rounded-[8px] lg:w-[55%] lg:flex-shrink-0">
-                    <div className="relative aspect-[4/3] w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 660px"
-                      />
+                  {/* Image with floating tags */}
+                  <div className="relative lg:w-[55%] lg:flex-shrink-0">
+                    <div className="overflow-hidden rounded-[36px]">
+                      <div className="relative aspect-[4/3] w-full transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 660px"
+                        />
+                      </div>
                     </div>
+
+                    {/* Floating tag bubbles */}
+                    {project.tags.map((tag, ti) => {
+                      const positions = [
+                        { top: "-6%", left: "5%", rotate: "-3deg" },
+                        { top: "-4%", right: "-2%", rotate: "2deg" },
+                        { bottom: "-5%", left: "8%", rotate: "-2deg" },
+                        { bottom: "-6%", right: "3%", rotate: "3deg" },
+                        { top: "40%", left: "-4%", rotate: "-4deg" },
+                      ];
+                      const pos = positions[ti % positions.length];
+                      return (
+                        <motion.span
+                          key={tag}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.3 + ti * 0.08, ease }}
+                          className="absolute z-20 inline-flex items-center rounded-full border border-white/15 bg-black/70 px-3 py-1.5 font-satoshi text-[12px] tracking-[-0.12px] text-white/80 backdrop-blur-md transition-colors hover:border-white/40 sm:text-[13px]"
+                          style={pos}
+                        >
+                          {tag}
+                        </motion.span>
+                      );
+                    })}
                   </div>
 
                   {/* Text content */}
                   <div className="mt-6 lg:mt-0 lg:flex-1">
-                    <p className="font-serif text-[18px] italic leading-[1.6] tracking-[-0.18px] text-white/60">
+                    <p className="font-mono text-[14px] uppercase tracking-[0.1em] text-white/50">
                       {project.company}
                     </p>
 
-                    <h3 className="mt-1 font-serif text-[36px] font-normal leading-[1.2] tracking-[-0.5px] text-white lg:text-[42px]">
+                    <h3 className="mt-2 font-serif text-[36px] font-normal leading-[1.2] tracking-[-0.5px] text-white lg:text-[42px]">
                       {project.title}
                     </h3>
 
-                    <p className="mt-3 font-sans text-[16px] italic leading-[1.6] text-white/50">
+                    <p className="mt-3 font-mono text-[14px] tracking-[0.05em] text-white/50">
                       {project.date}
                     </p>
 
-                    <p className="mt-4 font-sans text-[17px] leading-[1.7] tracking-[-0.17px] text-white/70 lg:text-[18px]">
+                    <p className="mt-4 font-sans text-[17px] leading-[1.7] tracking-[-0.17px] text-white lg:text-[20px]">
                       {project.description}
                     </p>
-
-                    {/* Tags - mobile only */}
-                    <div className="mt-4 flex flex-wrap gap-2 lg:hidden">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center rounded-full border border-white/15 bg-black/80 px-4 py-2 font-satoshi text-[16px] leading-[2] tracking-[-0.2px] text-white/80 transition-colors hover:border-white/40"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </motion.a>

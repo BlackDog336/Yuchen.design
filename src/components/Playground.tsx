@@ -107,15 +107,49 @@ function PlaygroundCard({ project, index }: { project: Project; index: number })
 
 export default function Playground() {
   return (
-    <section id="playground" className="px-6 py-12 sm:px-8 md:py-16 lg:px-12">
+    <section id="playground" className="relative z-10 px-8 py-12 sm:px-8 md:py-16 lg:px-12">
       <div
-        className="mx-auto rounded-[36px] px-8 py-20 md:py-32 lg:px-16 animate-gradient-shift"
+        className="relative mx-auto overflow-hidden rounded-[36px] px-10 py-20 sm:px-12 md:py-32 lg:px-16 animate-gradient-shift"
         style={{
-          background: "linear-gradient(135deg, #e8662a, #f5903c, #ff6b6b, #ffa040, #d45520, #ff8c42, #e8662a)",
-          backgroundSize: "300% 300%",
+          background: "linear-gradient(135deg, #d44a1a, #e8662a, #f5903c, #ffb366, #f5903c, #e8662a, #c23a10, #d44a1a)",
+          backgroundSize: "400% 400%",
         }}
       >
-        <div className="mx-auto max-w-[1180px]">
+        {/* Rotating conic flare – blurred layer */}
+        <div className="pointer-events-none absolute animate-flare-spin" style={{ width: "140%", height: "140%", left: "-20%", top: "-20%" }}>
+          <div
+            className="h-full w-full animate-flare-pulse opacity-60 blur-[80px]"
+            style={{
+              background: "conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,0.35) 40deg, transparent 120deg, rgba(255,200,100,0.3) 200deg, transparent 280deg, rgba(255,255,255,0.2) 340deg, transparent 360deg)",
+              borderRadius: "50%",
+            }}
+          />
+        </div>
+
+        {/* Rotating conic flare – sharp blend layer */}
+        <div className="pointer-events-none absolute animate-flare-spin-reverse mix-blend-soft-light" style={{ width: "120%", height: "120%", left: "-10%", top: "-10%" }}>
+          <div
+            className="h-full w-full animate-flare-pulse-alt opacity-50 blur-[50px]"
+            style={{
+              background: "conic-gradient(from 180deg, transparent 0deg, rgba(255,220,150,0.4) 60deg, transparent 150deg, rgba(255,255,255,0.3) 240deg, transparent 330deg, transparent 360deg)",
+              borderRadius: "50%",
+            }}
+          />
+        </div>
+
+        {/* Dot grid pattern */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+
+        {/* Film grain texture */}
+        <div className="pointer-events-none absolute inset-0 animate-grain opacity-[0.12] mix-blend-overlay" />
+
+        <div className="relative z-10 mx-auto max-w-[1180px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,12 +160,12 @@ export default function Playground() {
           <h2 className="font-serif text-[64px] font-normal leading-[1.2] tracking-[-1px] text-white">
             Playground
           </h2>
-          <p className="mx-auto mt-3 font-sans whitespace-nowrap text-[22px] leading-[1.6] tracking-[-0.18px] text-white">
+          <p className="mx-auto mt-3 font-sans text-[20px] leading-[1.6] tracking-[-0.18px] text-white">
             Vibe Coding Projects, XR, Games, Textiles, 3D Arts, Programming Arts etc.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
           {projects.map((project, i) => (
             <PlaygroundCard key={project.title} project={project} index={i} />
           ))}

@@ -9,7 +9,9 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 pt-[240px] pb-[120px] lg:px-16">
       <Starfield />
-      <div className="flex w-full max-w-[900px] flex-col items-center text-center">
+
+
+      <div className="relative z-[3] flex w-full max-w-[900px] flex-col items-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -33,7 +35,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease }}
-          className="mt-4 text-center font-satoshi text-[18px] leading-[1.2] tracking-[-0.54px] text-white/50"
+          className="mt-4 text-center font-satoshi text-[20px] leading-[1.2] tracking-[-0.54px] text-white/50"
         >
           Product Designer @ CodePay &middot; NYC &middot; Open to opportunities
         </motion.p>
