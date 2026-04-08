@@ -1,19 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import DogVideo from "./DogVideo";
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 export default function Footer() {
   return (
-    <footer className="px-8 pb-16 pt-32 lg:px-16">
+    <footer className="relative overflow-hidden px-8 pb-16 pt-32 lg:px-16">
+      <DogVideo />
       {/* Big CTA */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease }}
-        className="text-center"
+        className="relative z-10 text-center"
       >
 <a
           href="mailto:yuchen666333@gmail.com"
@@ -41,11 +43,7 @@ export default function Footer() {
       </motion.div>
 
       {/* Bottom bar */}
-      <div className="mt-24 flex items-center justify-between">
-        <p className="font-satoshi text-[13px] text-white">
-          Made with &lt;3 by Yuchen :)
-        </p>
-
+      <div className="relative z-10 mt-24 flex flex-col items-start gap-3">
         <div className="flex items-center gap-4">
           <a
             href="mailto:yuchen666333@gmail.com"
@@ -84,6 +82,9 @@ export default function Footer() {
             </svg>
           </a>
         </div>
+        <p className="font-satoshi text-[13px] text-white">
+          Made with &lt;3 by Yuchen :)
+        </p>
       </div>
     </footer>
   );

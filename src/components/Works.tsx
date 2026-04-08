@@ -116,8 +116,8 @@ function Perspective3DImage({ src, alt, imageFirst }: { src: string; alt: string
     target: ref,
     offset: ["start end", "end start"],
   });
-  const rotateY = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [-4, 0, 4] : [4, 0, -4]);
-  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [2, 0, -2] : [-2, 0, 2]);
+  const rotateY = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [-6, 3, 6] : [6, -3, -6]);
+  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [3, -1.5, -3] : [-3, 1.5, 3]);
 
   return (
     <motion.div
@@ -145,16 +145,18 @@ function ParallaxTags({ tags, imageFirst }: { tags: string[]; imageFirst: boolea
     offset: ["start end", "end start"],
   });
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const rotateY = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [-6, 3, 6] : [6, -3, -6]);
+  const rotate = useTransform(scrollYProgress, [0, 0.5, 1], imageFirst ? [3, -1.5, -3] : [-3, 1.5, 3]);
 
   return (
     <motion.div
       ref={ref}
-      style={{ y }}
+      style={{ y, rotateY, rotate, perspective: 800 }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.3, ease }}
-      className={`absolute bottom-0 z-20 flex translate-y-[12.5%] flex-col gap-2 rounded-2xl border border-black/10 bg-white/70 px-5 py-4 backdrop-blur-xl sm:px-6 sm:py-5 ${
+      className={`absolute bottom-0 z-20 flex translate-y-[12.5%] flex-col gap-2 rounded-2xl border border-white/40 bg-white/25 px-5 py-4 shadow-lg shadow-black/10 backdrop-blur-2xl sm:px-6 sm:py-5 ${
         imageFirst ? "right-0 translate-x-[12.5%]" : "left-0 -translate-x-[12.5%]"
       }`}
     >

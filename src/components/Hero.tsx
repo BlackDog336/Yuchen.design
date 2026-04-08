@@ -10,7 +10,6 @@ export default function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-8 pt-[240px] pb-[120px] lg:px-16">
       <Starfield />
 
-
       <div className="relative z-[3] flex w-full max-w-[900px] flex-col items-center text-center lg:items-start lg:text-left">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
