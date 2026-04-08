@@ -38,19 +38,19 @@ const metrics = [
 
 export default function DiDiPage() {
   return (
-    <main className="relative min-h-screen w-full bg-bg text-white">
+    <main className="relative min-h-screen w-full bg-white text-gray-900">
       {/* Grain texture overlay */}
       <div
-        className="pointer-events-none fixed inset-0 z-[1] opacity-[0.08]"
+        className="pointer-events-none fixed inset-0 z-[1] opacity-[0.03]"
         style={{ backgroundImage: "url(/images/grain-texture.png)" }}
       />
 
       <CaseStudyNav />
 
       {/* ── Hero Header ── */}
-      <header className="relative overflow-hidden border-b border-white/10 px-8 lg:px-16">
-        <div className="pointer-events-none absolute -left-40 top-20 h-[400px] w-[400px] rounded-full bg-accent/[0.08] blur-[120px]" />
-        <div className="pointer-events-none absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-accent-secondary/[0.06] blur-[100px]" />
+      <header className="relative overflow-hidden border-b border-gray-200 px-8 lg:px-16">
+        <div className="pointer-events-none absolute -left-40 top-20 h-[400px] w-[400px] rounded-full bg-accent/[0.05] blur-[150px]" />
+        <div className="pointer-events-none absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-accent-secondary/[0.04] blur-[120px]" />
         <div className="mx-auto max-w-[1200px] pb-16 pt-20 lg:pt-28">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function DiDiPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease }}
-            className="mt-4 max-w-[800px] font-serif text-[48px] font-normal leading-[1.15] tracking-[-1.5px] text-white lg:text-[72px]"
+            className="mt-4 max-w-[800px] font-serif text-[48px] font-normal leading-[1.15] tracking-[-1.5px] text-gray-900 lg:text-[72px]"
           >
             Autonomous Trucking
           </motion.h1>
@@ -74,7 +74,7 @@ export default function DiDiPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease }}
-            className="mt-6 max-w-[640px] font-sans text-lg leading-[1.7] text-white/50 lg:text-xl"
+            className="mt-6 max-w-[640px] font-sans text-lg leading-[1.7] text-gray-500 lg:text-xl"
           >
             Designing fleet ops + HMI interactions for autonomous trucking &mdash;
             mapping dispatch-to-execution workflows and defining risk-aware UI
@@ -89,10 +89,10 @@ export default function DiDiPage() {
           >
             {metadata.map((item) => (
               <div key={item.label}>
-                <p className="font-mono text-xs uppercase tracking-[0.15em] text-white/25">
+                <p className="font-mono text-xs uppercase tracking-[0.15em] text-gray-300">
                   {item.label}
                 </p>
-                <p className="mt-1 font-sans text-sm text-white/60">
+                <p className="mt-1 font-sans text-sm text-gray-500">
                   {item.value}
                 </p>
               </div>
@@ -105,19 +105,19 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/25">
+            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-300">
               Impact
             </p>
             <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
+                  className="rounded-2xl border border-gray-200 bg-gray-50 p-6 backdrop-blur-sm"
                 >
-                  <p className="font-serif text-[40px] leading-[1] tracking-[-1px] text-white lg:text-[48px]">
+                  <p className="font-serif text-[40px] leading-[1] tracking-[-1px] text-gray-900 lg:text-[48px]">
                     {metric.value}
                   </p>
-                  <p className="mt-3 font-sans text-[14px] leading-[1.5] text-white/40">
+                  <p className="mt-3 font-sans text-[14px] leading-[1.5] text-gray-400">
                     {metric.label}
                   </p>
                 </div>
@@ -130,8 +130,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -139,29 +139,29 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/25">
+            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-300">
               Overview
             </p>
-            <h2 className="mt-4 max-w-[800px] font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="mt-4 max-w-[800px] font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Two parallel workstreams, one mission
             </h2>
             <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 backdrop-blur-sm">
                 <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-accent">
                   Workstream A
                 </p>
-                <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60">
+                <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500">
                   Enhanced the existing convoy trucking product through software and
                   hardware upgrades &mdash; designing a driver dispatch app, refining
                   HMI lane-change warnings, and defining an external lighting system
                   for autonomous vehicles.
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-sm">
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 backdrop-blur-sm">
                 <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-accent">
                   Workstream B
                 </p>
-                <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60">
+                <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500">
                   Contributed to the L4 autonomous concept truck definition for the
                   April unveiling, and led the production of a promotional video that
                   showcased product differentiation and key features to 10K+ viewers.
@@ -175,8 +175,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -184,10 +184,10 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               01
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Dispatch App for Drivers
             </h2>
           </motion.div>
@@ -201,7 +201,7 @@ export default function DiDiPage() {
               <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent">
                 Problem
               </p>
-              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 Previous dispatch operations relied on <em>WeChat group chats</em>,
                 which was cumbersome and difficult to manage. Drivers had no
                 centralized way to view orders, track status, or coordinate with
@@ -213,7 +213,7 @@ export default function DiDiPage() {
               <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent">
                 Solution
               </p>
-              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 Designed a dedicated mobile dispatch app that replaced ad-hoc
                 messaging with a structured workflow. The app provides
                 identity-based authentication, real-time order lists, status
@@ -225,7 +225,7 @@ export default function DiDiPage() {
 
           {/* Feature Breakdown */}
           <motion.div {...fadeUp} className="mt-12">
-            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/25">
+            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-300">
               Key Features
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -257,12 +257,12 @@ export default function DiDiPage() {
               ].map((feature) => (
                 <div
                   key={feature.title}
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm"
+                  className="rounded-xl border border-gray-200 bg-gray-50/80 p-6 backdrop-blur-sm"
                 >
-                  <p className="font-sans text-[16px] font-medium text-white">
+                  <p className="font-sans text-[16px] font-medium text-gray-900">
                     {feature.title}
                   </p>
-                  <p className="mt-2 font-sans text-[14px] leading-[1.6] text-white/40">
+                  <p className="mt-2 font-sans text-[14px] leading-[1.6] text-gray-400">
                     {feature.desc}
                   </p>
                 </div>
@@ -272,11 +272,11 @@ export default function DiDiPage() {
 
           {/* Design Spec Callout */}
           <motion.div {...fadeUp} className="mt-12">
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-8">
-              <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/40">
+            <div className="rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-100 to-gray-50 p-8">
+              <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-400">
                 Design Handoff
               </p>
-              <p className="mt-3 font-sans text-[17px] leading-[1.7] text-white/50">
+              <p className="mt-3 font-sans text-[17px] leading-[1.7] text-gray-500">
                 Used the Lanhu platform to deliver design specifications and assets
                 to software engineers, enabling seamless dev handoff and
                 reducing back-and-forth during implementation.
@@ -289,8 +289,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -298,10 +298,10 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               02
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               HMI Lane Change Warning Design
             </h2>
           </motion.div>
@@ -314,7 +314,7 @@ export default function DiDiPage() {
               <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent">
                 Context
               </p>
-              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 V2X information visualization is the main component of the HMI,
                 dynamically displaying real-time statistics from road inspection.
                 A critical alert triggers when a turn signal indicates lane-change
@@ -326,7 +326,7 @@ export default function DiDiPage() {
               <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent">
                 Challenge
               </p>
-              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 The initial design (Version 1) was too visually dominant &mdash;
                 it overwhelmed the driver&rsquo;s attention and obstructed other
                 critical information on the display. The warning needed to be
@@ -338,11 +338,11 @@ export default function DiDiPage() {
 
           {/* Iteration Callout */}
           <motion.div {...fadeUp} className="mt-12">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-accent/[0.08] to-transparent p-8">
+            <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gradient-to-br from-accent/10 to-transparent p-8">
               <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-accent">
                 Iteration Insight
               </p>
-              <p className="mt-3 font-sans text-[17px] leading-[1.7] text-white/50">
+              <p className="mt-3 font-sans text-[17px] leading-[1.7] text-gray-500">
                 Version 1 was flagged as &ldquo;too obvious, affecting the
                 driver&rsquo;s attention and obstructing other information.&rdquo;
                 Through iterative refinement, the warning was redesigned to use
@@ -358,8 +358,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -367,16 +367,16 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               03
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Lighting System Design &amp; Testing
             </h2>
           </motion.div>
 
           <motion.div {...fadeUp} className="mt-12">
-            <p className="max-w-[700px] font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+            <p className="max-w-[700px] font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
               During autonomous convoy driving on both public and closed roads, it
               is necessary to communicate specific information to the external
               environment &mdash; other drivers, pedestrians, and roadside
@@ -387,7 +387,7 @@ export default function DiDiPage() {
 
           {/* Scenarios */}
           <motion.div {...fadeUp} className="mt-12">
-            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/25">
+            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-300">
               Driving Scenarios
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -402,43 +402,43 @@ export default function DiDiPage() {
                   scenario: "Autonomous Driving",
                   desc: "Autonomous driving is activated and the truck is operating within convoy.",
                   light: "Flowing green light strip",
-                  color: "bg-emerald-400/40",
+                  color: "bg-emerald-500/30",
                 },
                 {
                   scenario: "Cut-in",
                   desc: "A social vehicle merges into the autonomous convoy, requiring awareness signals.",
                   light: "Fast flashing yellow light strip",
-                  color: "bg-yellow-400/40",
+                  color: "bg-yellow-500/30",
                 },
                 {
                   scenario: "Fallback (Mobile)",
                   desc: "An autonomous truck separates from the convoy and operates alone but can still drive.",
                   light: "Double flashing yellow light strip",
-                  color: "bg-amber-400/40",
+                  color: "bg-amber-500/30",
                 },
                 {
                   scenario: "Fallback (Stopping)",
                   desc: "The truck is in fallback mode and pulling over or stopping on the roadside.",
                   light: "Double flashing red light strip + rear strobe",
-                  color: "bg-red-400/40",
+                  color: "bg-red-500/30",
                 },
               ].map((item) => (
                 <div
                   key={item.scenario}
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm"
+                  className="rounded-xl border border-gray-200 bg-gray-50/80 p-6 backdrop-blur-sm"
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className={`h-3 w-3 rounded-full ${item.color}`}
                     />
-                    <p className="font-sans text-[16px] font-medium text-white">
+                    <p className="font-sans text-[16px] font-medium text-gray-900">
                       {item.scenario}
                     </p>
                   </div>
-                  <p className="mt-3 font-sans text-[14px] leading-[1.6] text-white/40">
+                  <p className="mt-3 font-sans text-[14px] leading-[1.6] text-gray-400">
                     {item.desc}
                   </p>
-                  <p className="mt-3 font-mono text-[12px] tracking-[0.05em] text-white/25">
+                  <p className="mt-3 font-mono text-[12px] tracking-[0.05em] text-gray-300">
                     {item.light}
                   </p>
                 </div>
@@ -448,21 +448,21 @@ export default function DiDiPage() {
 
           {/* Definitions */}
           <motion.div {...fadeUp} className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-8 backdrop-blur-sm">
               <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-accent">
                 Cut-in
               </p>
-              <p className="mt-3 font-sans text-[16px] leading-[1.6] text-white/50">
+              <p className="mt-3 font-sans text-[16px] leading-[1.6] text-gray-500">
                 A scenario where a social vehicle merges into the autonomous
                 convoy. The lighting system must immediately signal awareness
                 to surrounding vehicles to maintain safety.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-8 backdrop-blur-sm">
               <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-accent">
                 Fallback
               </p>
-              <p className="mt-3 font-sans text-[16px] leading-[1.6] text-white/50">
+              <p className="mt-3 font-sans text-[16px] leading-[1.6] text-gray-500">
                 A scenario where an autonomous truck separates from the convoy
                 and operates alone. Lighting escalates from yellow to red
                 depending on whether the vehicle can continue driving or must
@@ -476,8 +476,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -485,23 +485,23 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               04
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Promotional Video Creation
             </h2>
           </motion.div>
 
           <motion.div {...fadeUp} className="mt-12 grid gap-10 lg:grid-cols-2">
             <div>
-              <p className="font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 Led the production of a promotional video that effectively
                 showcased product differentiation and key features of KargoBot&rsquo;s
                 autonomous trucking platform. The video reached over 10,000 views
                 and generated 1,000+ engagements across social platforms.
               </p>
-              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+              <p className="mt-4 font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
                 The production leveraged a multi-tool pipeline &mdash; from Blender
                 for 3D renders and After Effects for motion graphics, to Premiere
                 for final edit and color grading &mdash; telling a compelling story
@@ -509,12 +509,12 @@ export default function DiDiPage() {
               </p>
             </div>
             <div className="flex items-center">
-              <div className="w-full rounded-2xl border border-white/10 bg-gradient-to-br from-accent/[0.08] to-accent-secondary/[0.04] p-8">
+              <div className="w-full rounded-2xl border border-gray-200 bg-gradient-to-br from-accent/10 to-accent-secondary/5 p-8">
                 <div className="flex items-baseline gap-4">
                   <span className="font-serif text-[48px] leading-[1] tracking-[-1px] text-accent">
                     10K+
                   </span>
-                  <span className="font-sans text-[16px] text-white/40">
+                  <span className="font-sans text-[16px] text-gray-400">
                     video views
                   </span>
                 </div>
@@ -522,7 +522,7 @@ export default function DiDiPage() {
                   <span className="font-serif text-[48px] leading-[1] tracking-[-1px] text-accent-secondary">
                     1K+
                   </span>
-                  <span className="font-sans text-[16px] text-white/40">
+                  <span className="font-sans text-[16px] text-gray-400">
                     social engagements
                   </span>
                 </div>
@@ -535,8 +535,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -544,16 +544,16 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               05
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               L4 Concept Truck Definition
             </h2>
           </motion.div>
 
           <motion.div {...fadeUp} className="mt-12">
-            <p className="max-w-[700px] font-sans text-[17px] leading-[1.7] text-white/60 lg:text-[18px]">
+            <p className="max-w-[700px] font-sans text-[17px] leading-[1.7] text-gray-500 lg:text-[18px]">
               Contributed to defining the L4 autonomous concept truck for the
               April unveiling event. This workstream involved envisioning the
               future state of fully autonomous freight &mdash; from exterior
@@ -567,8 +567,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -576,10 +576,10 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-white/25">
+            <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-300">
               Design Principles
             </p>
-            <h2 className="mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Guiding the work
             </h2>
           </motion.div>
@@ -604,15 +604,15 @@ export default function DiDiPage() {
             ].map((principle) => (
               <div
                 key={principle.num}
-                className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent p-8"
+                className="rounded-2xl border border-gray-200 bg-gradient-to-b from-gray-100 to-transparent p-8"
               >
                 <span className="font-mono text-[14px] text-accent">
                   {principle.num}
                 </span>
-                <h3 className="mt-3 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-white">
+                <h3 className="mt-3 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-gray-900">
                   {principle.title}
                 </h3>
-                <p className="mt-3 font-sans text-[15px] leading-[1.7] text-white/40">
+                <p className="mt-3 font-sans text-[15px] leading-[1.7] text-gray-400">
                   {principle.desc}
                 </p>
               </div>
@@ -624,8 +624,8 @@ export default function DiDiPage() {
       {/* ── Divider ── */}
       <div className="px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] relative">
-          <div className="border-t border-white/[0.06]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+          <div className="border-t border-gray-100" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
         </div>
       </div>
 
@@ -633,16 +633,16 @@ export default function DiDiPage() {
       <section className="px-8 py-16 lg:px-16">
         <div className="mx-auto max-w-[1200px]">
           <motion.div {...fadeUp}>
-            <span className="font-mono text-[80px] font-bold leading-[1] text-white/[0.06] lg:text-[120px]">
+            <span className="font-mono text-[80px] font-bold leading-[1] text-gray-100 lg:text-[120px]">
               06
             </span>
-            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-white md:text-[40px]">
+            <h2 className="-mt-4 font-serif text-[32px] leading-[1.25] tracking-[-0.5px] text-gray-900 md:text-[40px]">
               Key Takeaways
             </h2>
           </motion.div>
 
           <motion.div {...fadeUp} className="mt-12 grid gap-8 lg:grid-cols-3">
-            <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+            <div className="relative rounded-2xl border border-gray-200 bg-gray-50/80 p-8 backdrop-blur-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
                 <svg
                   width="20"
@@ -658,10 +658,10 @@ export default function DiDiPage() {
                   <path d="M4 6h16M4 10h12M4 14h8M4 18h4" />
                 </svg>
               </div>
-              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-white">
+              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-gray-900">
                 Managing Parallel Tasks
               </h3>
-              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-white/40">
+              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-gray-400">
                 Learned how to handle multiple tasks efficiently, allocate time
                 wisely, and prioritize based on importance and urgency. Balancing
                 the dispatch app, HMI design, and lighting system simultaneously
@@ -669,7 +669,7 @@ export default function DiDiPage() {
               </p>
             </div>
 
-            <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+            <div className="relative rounded-2xl border border-gray-200 bg-gray-50/80 p-8 backdrop-blur-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
                 <svg
                   width="20"
@@ -687,10 +687,10 @@ export default function DiDiPage() {
                   <path d="M2 12h20" />
                 </svg>
               </div>
-              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-white">
+              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-gray-900">
                 Product Sense
               </h3>
-              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-white/40">
+              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-gray-400">
                 Developed broader strategic thinking by analyzing potential
                 scenarios and features comprehensively. Went beyond pixel-perfect
                 screens to consider how the product behaves in edge cases,
@@ -698,7 +698,7 @@ export default function DiDiPage() {
               </p>
             </div>
 
-            <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm">
+            <div className="relative rounded-2xl border border-gray-200 bg-gray-50/80 p-8 backdrop-blur-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
                 <svg
                   width="20"
@@ -715,10 +715,10 @@ export default function DiDiPage() {
                   <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                 </svg>
               </div>
-              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-white">
+              <h3 className="mt-5 font-serif text-[22px] leading-[1.3] tracking-[-0.3px] text-gray-900">
                 Storytelling
               </h3>
-              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-white/40">
+              <p className="mt-3 font-sans text-[15px] leading-[1.7] text-gray-400">
                 Enhanced storytelling skills through the promotional video and
                 concept definition work. By starting from real-world scenarios
                 and challenges, learned to present a technology-driven product

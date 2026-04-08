@@ -35,7 +35,7 @@ function MetaItem({ label, value }: { label: string; value: string }) {
       <p className="font-mono text-[12px] uppercase tracking-[0.15em] text-gray-400">
         {label}
       </p>
-      <p className="mt-1 font-sans text-[15px] leading-[1.6] text-gray-800">
+      <p className="mt-1 font-sans text-[15px] leading-[1.6] text-gray-700">
         {value}
       </p>
     </div>
@@ -60,7 +60,7 @@ function MetricCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease }}
-      className="rounded-2xl border border-gray-200 bg-gray-50 p-6 backdrop-blur-md"
+      className="rounded-2xl border border-gray-200 bg-gray-50 p-6 backdrop-blur-sm"
     >
       <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-gray-400">
         {label}
@@ -68,7 +68,7 @@ function MetricCard({
       <p className="mt-2 font-serif text-[32px] leading-[1.1] tracking-[-0.5px] text-accent">
         {value}
       </p>
-      <p className="mt-2 font-sans text-[14px] leading-[1.6] text-gray-500">
+      <p className="mt-2 font-sans text-[14px] leading-[1.6] text-gray-400">
         {detail}
       </p>
     </motion.div>
@@ -93,7 +93,7 @@ function PrincipleCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay, ease }}
-      className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6"
+      className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6 backdrop-blur-sm"
     >
       <span className="font-mono text-[12px] text-accent/70">{number}</span>
       <h4 className="mt-2 font-serif text-[18px] leading-[1.3] text-gray-900">
@@ -119,7 +119,7 @@ function SectionHeader({
   return (
     <FadeIn>
       <div className="mb-12">
-        <span className="font-mono text-[72px] font-bold leading-none text-gray-200">
+        <span className="font-mono text-[72px] font-bold leading-none text-gray-100">
           {number}
         </span>
         <h3 className="mt-4 font-serif text-[36px] leading-[1.2] tracking-[-0.5px] text-gray-900 lg:text-[42px]">
@@ -172,7 +172,12 @@ function BodyStrong({ children }: { children: React.ReactNode }) {
 
 /* ─── Divider ─── */
 function Divider() {
-  return <div className="border-t border-gray-200" />;
+  return (
+    <div className="relative">
+      <div className="border-t border-gray-100" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
+    </div>
+  );
 }
 
 /* ═══════════════════════════════════════════
@@ -181,11 +186,17 @@ function Divider() {
 
 export default function CodePayPage() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="relative min-h-screen bg-white text-gray-900">
+      {/* Grain */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[1] opacity-[0.03]"
+        style={{ backgroundImage: "url(/images/grain-texture.png)" }}
+      />
+
       <CaseStudyNav />
 
       {/* ═══ HERO ═══ */}
-      <header className="border-b border-gray-200 px-8 lg:px-16">
+      <header className="relative overflow-hidden border-b border-gray-200 px-8 lg:px-16">
         <div className="mx-auto max-w-[1200px] pb-16 pt-20 lg:pt-28">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -229,6 +240,10 @@ export default function CodePayPage() {
             <MetaItem label="My Scope" value="Design System, Risk-aware UX, End-to-End Ownership" />
           </motion.div>
         </div>
+
+        {/* Hero glow orbs */}
+        <div className="pointer-events-none absolute -left-40 top-20 h-[400px] w-[400px] rounded-full bg-accent/[0.05] blur-[150px]" />
+        <div className="pointer-events-none absolute -right-20 bottom-0 h-[300px] w-[300px] rounded-full bg-accent-secondary/[0.04] blur-[120px]" />
       </header>
 
       {/* ═══ IMPACT METRICS ═══ */}
@@ -268,7 +283,7 @@ export default function CodePayPage() {
           </div>
 
           <FadeIn delay={0.1}>
-            <div className="mt-6 rounded-2xl border border-gray-200 bg-gray-50 p-6 backdrop-blur-md">
+            <div className="mt-6 rounded-2xl border border-gray-200 bg-gray-50 p-6 backdrop-blur-sm">
               <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-gray-400">
                 GTM
               </p>
@@ -311,7 +326,7 @@ export default function CodePayPage() {
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
-                <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6 h-full">
+                <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6 h-full backdrop-blur-sm">
                   <h4 className="font-serif text-[18px] leading-[1.3] text-gray-900">
                     {item.title}
                   </h4>
@@ -388,7 +403,7 @@ export default function CodePayPage() {
               ].map((step, i) => (
                 <div
                   key={step}
-                  className="rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-4 text-center"
+                  className="rounded-xl border border-gray-200 bg-gray-50/80 px-4 py-4 text-center backdrop-blur-sm"
                 >
                   <span className="block font-mono text-[11px] text-accent/60 mb-2">
                     {String(i + 1).padStart(2, "0")}
@@ -416,7 +431,7 @@ export default function CodePayPage() {
               often wrong. Showing the right state at the right moment is the
               cheapest form of error prevention.
             </Body>
-            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-300 mb-2">
                 Problem
               </p>
@@ -446,7 +461,7 @@ export default function CodePayPage() {
               you catch a mistake — through structure, constraints, and real-time
               feedback — the less damage it can do.
             </Body>
-            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-300 mb-2">
                 Problem
               </p>
@@ -478,7 +493,7 @@ export default function CodePayPage() {
               design doesn&rsquo;t ask people to ignore what&rsquo;s irrelevant
               — it just doesn&rsquo;t show it.
             </Body>
-            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-300 mb-2">
                 Problem
               </p>
@@ -514,7 +529,7 @@ export default function CodePayPage() {
               current screen, the interface should make that difference felt — not
               just stated.
             </Body>
-            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-gray-300 mb-2">
                 Problem
               </p>
@@ -617,12 +632,12 @@ export default function CodePayPage() {
               ].map((item) => (
                 <div
                   key={item.num}
-                  className="rounded-xl border border-gray-200 bg-gray-50/80 p-5"
+                  className="rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm"
                 >
                   <span className="font-mono text-[12px] text-accent/60">
                     {item.num}
                   </span>
-                  <h5 className="mt-2 font-sans text-[15px] font-medium leading-[1.4] text-gray-800">
+                  <h5 className="mt-2 font-sans text-[15px] font-medium leading-[1.4] text-gray-700">
                     {item.label}
                   </h5>
                   <p className="mt-2 font-sans text-[13px] leading-[1.7] text-gray-400">
@@ -731,7 +746,7 @@ export default function CodePayPage() {
           </FadeIn>
 
           <SubBlock title="AI Tradeoff Reflection">
-            <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <Body>
                 <BodyStrong>
                   The tradeoff I didn&rsquo;t fully anticipate:
@@ -800,7 +815,7 @@ export default function CodePayPage() {
           </SubBlock>
 
           <SubBlock>
-            <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-5">
+            <div className="rounded-xl border border-gray-200 bg-gray-50/80 p-5 backdrop-blur-sm">
               <Body>
                 <BodyStrong>v3.0 had one goal:</BodyStrong> rebuild it so
                 it&rsquo;s fast enough for a rushed cashier, clear enough to
@@ -859,7 +874,7 @@ export default function CodePayPage() {
                       key={item}
                       className="flex items-start gap-2 font-sans text-[14px] leading-[1.6] text-gray-400"
                     >
-                      <span className="mt-1.5 block h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                      <span className="mt-1.5 block h-1 w-1 shrink-0 rounded-full bg-gray-400" />
                       {item}
                     </li>
                   ))}
@@ -916,7 +931,7 @@ export default function CodePayPage() {
                       key={item}
                       className="flex items-start gap-2 font-sans text-[14px] leading-[1.6] text-gray-400"
                     >
-                      <span className="mt-1.5 block h-1 w-1 shrink-0 rounded-full bg-white/30" />
+                      <span className="mt-1.5 block h-1 w-1 shrink-0 rounded-full bg-gray-400" />
                       {item}
                     </li>
                   ))}
@@ -1026,7 +1041,7 @@ export default function CodePayPage() {
               },
             ].map((gap, i) => (
               <FadeIn key={gap.num} delay={i * 0.08}>
-                <div className="h-full rounded-2xl border border-gray-200 bg-gray-50/80 p-6">
+                <div className="h-full rounded-2xl border border-gray-200 bg-gray-50/80 p-6 backdrop-blur-sm">
                   <span className="font-mono text-[12px] text-accent/60">
                     {gap.num}
                   </span>
@@ -1152,7 +1167,7 @@ export default function CodePayPage() {
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
-                <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6 h-full">
+                <div className="rounded-2xl border border-gray-200 bg-gray-50/80 p-6 h-full backdrop-blur-sm">
                   <h4 className="font-serif text-[18px] leading-[1.3] text-gray-900">
                     {item.title}
                   </h4>

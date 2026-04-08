@@ -137,7 +137,7 @@ export default function Story() {
               </p>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] sm:rounded-[36px]">
                 <img
-                  src="/images/surfing.jpg"
+                  src="/images/奶包.JPG"
                   alt="Surfing"
                   className="h-full w-full object-cover"
                 />
