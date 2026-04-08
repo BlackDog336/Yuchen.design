@@ -34,7 +34,7 @@ export default function Story() {
         ([entry]) => {
           if (entry.isIntersecting) setActiveTab(tab);
         },
-        { rootMargin: "-40% 0px -40% 0px" }
+        { rootMargin: "-10% 0px -60% 0px", threshold: 0 }
       );
 
       observer.observe(el);
@@ -141,18 +141,28 @@ export default function Story() {
             </div>
           </div>
 
-          {/* Right - Values */}
-          <div className="flex flex-row flex-wrap gap-6 lg:w-[200px] lg:shrink-0 lg:flex-col lg:gap-10 lg:pt-2">
-            {values.map((v, i) => (
-              <div key={i}>
-                <span className="font-serif text-[36px] leading-[1.2] text-accent">
-                  {v.accent}
+          {/* Right - Values + Hobbies */}
+          <div className="flex flex-row flex-wrap gap-6 lg:w-[200px] lg:shrink-0 lg:flex-col lg:justify-between lg:gap-10 lg:pt-2">
+            <div className="flex flex-col gap-10">
+              {values.map((v, i) => (
+                <div key={i}>
+                  <span className="font-serif text-[36px] leading-[1.2] text-accent">
+                    {v.accent}
+                  </span>
+                  <p className="mt-1 font-sans text-[16px] leading-[1.6] tracking-[-0.16px] text-white/80">
+                    {v.sub}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-2">
+              {["Snowboarding", "Surfing", "Traveling", "City Walking", "Space Aesthetics"].map((hobby) => (
+                <span key={hobby} className="font-sans text-[16px] leading-[1.6] tracking-[-0.16px] text-white/40">
+                  {hobby}
                 </span>
-                <p className="mt-1 font-sans text-[16px] leading-[1.6] tracking-[-0.16px] text-white/80">
-                  {v.sub}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

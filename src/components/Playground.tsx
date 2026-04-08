@@ -52,52 +52,53 @@ function PlaygroundCard({ project, index }: { project: Project; index: number })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.12, ease }}
-      className="group block overflow-hidden rounded-[36px] bg-white/10 backdrop-blur-sm"
+      className="group relative block aspect-[4/3] overflow-hidden rounded-[36px]"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      {/* Background image / gradient */}
+      <div className="absolute inset-0 transition-[filter] duration-700 ease-out group-hover:blur-[6px]">
         {project.image ? (
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         ) : (
           <div
-            className="h-full w-full transition-transform duration-500 ease-out group-hover:scale-105"
+            className="h-full w-full transition-transform duration-700 ease-out group-hover:scale-110"
             style={{ background: project.gradient }}
           />
         )}
       </div>
 
-      <div className="p-6 sm:p-8">
-        <h3 className="font-serif text-[32px] font-normal leading-[1.3] text-white">
+      {/* Dark overlay – darkens + covers blur on hover */}
+      <div className="absolute inset-0 bg-black/30 transition-all duration-500 group-hover:bg-black/60" />
+
+      {/* Content overlay – pinned to bottom */}
+      <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 sm:p-8">
+        {/* Title – always visible, slides up on hover */}
+        <h3 className="font-serif text-[28px] font-normal leading-[1.3] text-white transition-transform duration-500 ease-out group-hover:-translate-y-2 sm:text-[32px]">
           {project.title}
         </h3>
-        <p className="mt-2 font-sans text-[16px] leading-[1.6] tracking-[-0.16px] text-white/80">
+
+        {/* Description – hidden by default, fades in on card hover */}
+        <p className="mt-0 max-h-0 overflow-hidden font-sans text-[15px] leading-[1.6] tracking-[-0.15px] text-white/80 opacity-0 transition-all duration-500 ease-out group-hover:mt-3 group-hover:max-h-[200px] group-hover:opacity-100">
           {project.description}
         </p>
-        {/* Button – crossfade between default & hover states */}
-        <div className="relative mt-6 h-12">
-          {/* Default: label + white circle arrow */}
-          <div className="absolute inset-0 flex items-center gap-3 transition-opacity duration-400 group-hover:opacity-0">
-            <span className="font-sans text-[16px] font-medium text-white">
+
+        {/* Button – hidden by default, fades in on card hover */}
+        <div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out [transition-delay:80ms] group-hover:mt-5 group-hover:max-h-[60px] group-hover:opacity-100">
+          <span className="group/btn relative inline-flex items-center overflow-hidden rounded-full border-2 border-[#1e2a78] bg-[#1e2a78] py-[5px] pl-6 pr-[5px] transition-[border-color] duration-600 ease-out hover:border-[#ffb347]">
+            {/* White ball that expands to fill, then turns orange */}
+            <span className="absolute right-[5px] top-1/2 h-[38px] w-[38px] -translate-y-1/2 rounded-full bg-white transition-all duration-500 ease-out group-hover/btn:right-1/2 group-hover/btn:h-[300%] group-hover/btn:w-[300%] group-hover/btn:translate-x-1/2 group-hover/btn:bg-accent" />
+            <span className="relative z-10 pr-3 font-sans text-[15px] font-medium text-white">
               Take a look
             </span>
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[18px] text-[#1a1a2e]">
-              &rarr;
+            <span className="relative z-10 flex h-[38px] w-[38px] items-center justify-center">
+              <span className="text-[17px] text-[#1e2a78] transition-all duration-500 ease-out group-hover/btn:rotate-[360deg] group-hover/btn:text-white">&rarr;</span>
             </span>
-          </div>
-          {/* Hover: filled accent pill */}
-          <div className="absolute inset-0 flex items-center opacity-0 transition-opacity duration-400 group-hover:opacity-100">
-            <span className="inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-2.5">
-              <span className="font-sans text-[16px] font-medium text-white">
-                Take a look
-              </span>
-              <span className="text-[18px] text-white">&rarr;</span>
-            </span>
-          </div>
+          </span>
         </div>
       </div>
     </motion.a>
@@ -106,14 +107,14 @@ function PlaygroundCard({ project, index }: { project: Project; index: number })
 
 export default function Playground() {
   return (
-    <section
-      id="playground"
-      className="px-8 py-20 md:py-32 lg:px-16"
-      style={{
-        background: "linear-gradient(180deg, #e8662a 0%, #f5903c 40%, #f0783a 70%, #d45520 100%)",
-      }}
-    >
-      <div className="mx-auto max-w-[1180px]">
+    <section id="playground" className="px-6 py-12 sm:px-8 md:py-16 lg:px-12">
+      <div
+        className="mx-auto rounded-[36px] px-8 py-20 md:py-32 lg:px-16"
+        style={{
+          background: "linear-gradient(180deg, #e8662a 0%, #f5903c 40%, #f0783a 70%, #d45520 100%)",
+        }}
+      >
+        <div className="mx-auto max-w-[1180px]">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -133,6 +134,7 @@ export default function Playground() {
           {projects.map((project, i) => (
             <PlaygroundCard key={project.title} project={project} index={i} />
           ))}
+        </div>
         </div>
       </div>
     </section>
