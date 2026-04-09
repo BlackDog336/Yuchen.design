@@ -12,19 +12,12 @@ export default function YuchenMorph() {
   const animating = useRef(false);
   const queued = useRef<boolean | null>(null);
 
-  // measure and animate width on text change
+  // Snap width at text swap (happens at peak blur, so invisible)
   useEffect(() => {
     const container = containerRef.current;
     const sizer = sizerRef.current;
     if (!container || !sizer) return;
-    const targetWidth = sizer.offsetWidth;
-    animate(container.offsetWidth, targetWidth, {
-      duration: 0.25,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => {
-        container.style.width = `${v}px`;
-      },
-    });
+    container.style.width = `${sizer.offsetWidth}px`;
   }, [displayText]);
 
   const runBlur = useCallback((toChinese: boolean) => {
