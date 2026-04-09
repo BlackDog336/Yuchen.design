@@ -19,7 +19,7 @@ export default function YuchenMorph() {
     const nextText = toChinese ? "雨晨" : "Yuchen";
 
     // blur up smoothly, swap text at peak, then deblur
-    animate(0, 12, {
+    animate(0, 5, {
       duration: 0.12,
       ease: [0.4, 0, 1, 1],
       onUpdate: (v) => {
@@ -27,7 +27,7 @@ export default function YuchenMorph() {
       },
       onComplete: () => {
         setDisplayText(nextText);
-        animate(12, 0, {
+        animate(5, 0, {
           duration: 0.18,
           ease: [0, 0, 0.2, 1],
           onUpdate: (v) => {
