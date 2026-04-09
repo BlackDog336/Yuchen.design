@@ -1,26 +1,46 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import { animate } from "framer-motion";
 
 export default function YuchenMorph() {
   const [chinese, setChinese] = useState(false);
   const [displayText, setDisplayText] = useState("Yuchen");
-  const [blurKey, setBlurKey] = useState(0);
   const containerRef = useRef<HTMLSpanElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const animating = useRef(false);
 
-  const trigger = useCallback(
-    (toChinese: boolean) => {
-      setChinese(toChinese);
-      // kick a new blur→deblur cycle
-      setBlurKey((k) => k + 1);
-      // swap text halfway through the blur
-      setTimeout(() => {
-        setDisplayText(toChinese ? "雨晨" : "Yuchen");
-      }, 80);
-    },
-    []
-  );
+  const trigger = useCallback((toChinese: boolean) => {
+    setChinese(toChinese);
+    const el = textRef.current;
+    if (!el || animating.current) return;
+    animating.current = true;
+
+    const nextText = toChinese ? "雨晨" : "Yuchen";
+
+    // blur up smoothly, swap text at peak, then deblur
+    animate(0, 12, {
+      duration: 0.12,
+      ease: [0.4, 0, 1, 1],
+      onUpdate: (v) => {
+        el.style.filter = `blur(${v}px)`;
+      },
+      onComplete: () => {
+        setDisplayText(nextText);
+        animate(12, 0, {
+          duration: 0.18,
+          ease: [0, 0, 0.2, 1],
+          onUpdate: (v) => {
+            el.style.filter = `blur(${v}px)`;
+          },
+          onComplete: () => {
+            el.style.filter = "blur(0px)";
+            animating.current = false;
+          },
+        });
+      },
+    });
+  }, []);
 
   return (
     <span
@@ -32,15 +52,12 @@ export default function YuchenMorph() {
     >
       <span className="invisible">{chinese ? "雨晨" : "Yuchen"}</span>
 
-      <motion.span
-        key={blurKey}
-        initial={{ filter: "blur(10px)" }}
-        animate={{ filter: "blur(0px)" }}
-        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      <span
+        ref={textRef}
         className="absolute inset-0 bg-gradient-to-r from-accent via-[#ffb366] to-accent bg-clip-text text-transparent"
       >
         {displayText}
-      </motion.span>
+      </span>
     </span>
   );
 }
