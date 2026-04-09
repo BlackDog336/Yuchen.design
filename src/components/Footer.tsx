@@ -156,7 +156,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           data-cursor="bone"
-          className="absolute bottom-4 left-4 z-20 cursor-grab select-none text-2xl active:cursor-grabbing"
+          className="absolute bottom-4 left-4 z-[9999] cursor-grab select-none text-2xl active:cursor-grabbing"
           title="Drag me to the dog!"
         >
           <motion.span

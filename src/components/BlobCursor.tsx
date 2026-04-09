@@ -1,6 +1,6 @@
 "use client"; 
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 interface BlobState {
   // Default dot
@@ -24,6 +24,18 @@ export default function BlobCursor() {
   const arrowScaleRef = useRef(0);
   const inPlaygroundRef = useRef(false);
   const colorRef = useRef(0); // 0 = orange, 1 = white
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const hideOnTouch = () => setHidden(true);
+    const showOnMouse = () => setHidden(false);
+    window.addEventListener("touchstart", hideOnTouch, { passive: true });
+    window.addEventListener("mousemove", showOnMouse, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", hideOnTouch);
+      window.removeEventListener("mousemove", showOnMouse);
+    };
+  }, []);
 
   const detectMode = useCallback((target: HTMLElement): BlobState => {
     // Explicit data-cursor overrides
@@ -324,6 +336,8 @@ export default function BlobCursor() {
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
+
+  if (hidden) return null;
 
   return (
     <>

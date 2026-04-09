@@ -13,6 +13,7 @@ function GooglyEye({
   r,
   scale,
   fancy,
+  closed,
 }: {
   pupilX: ReturnType<typeof useSpring>;
   pupilY: ReturnType<typeof useSpring>;
@@ -21,67 +22,86 @@ function GooglyEye({
   r: number;
   scale: number;
   fancy: boolean;
+  closed: boolean;
 }) {
+  // Happy closed-eye arc: a parabolic curve like ◠
+  const closedPath = `M ${cx - r * 0.8} ${cy} Q ${cx} ${cy - r * 1.1} ${cx + r * 0.8} ${cy}`;
+
   return (
     <motion.g
       animate={{ scale }}
       transition={{ type: "spring", stiffness: 120, damping: 14 }}
       style={{ transformOrigin: `${cx}px ${cy}px` }}
     >
-      <circle cx={cx} cy={cy} r={r * 1.3} fill="white" opacity="0.15" />
-      <circle
-        cx={cx}
-        cy={cy}
-        r={r}
-        fill="white"
-        stroke="rgba(0,0,0,0.2)"
-        strokeWidth="2"
-      />
-      {/* Main pupil - always black */}
-      <motion.circle
-        cx={cx}
-        cy={cy}
-        r={r * 0.55}
-        fill="#111"
-        style={{ x: pupilX, y: pupilY }}
-      />
-      {/* Fancy details - fade in on hover */}
-      <motion.circle
-        cx={cx}
-        cy={cy}
-        r={r * 0.45}
-        fill="#3b2f1a"
-        animate={{ opacity: fancy ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ x: pupilX, y: pupilY }}
-      />
-      <motion.circle
-        cx={cx}
-        cy={cy}
-        r={r * 0.25}
-        fill="#000"
-        animate={{ opacity: fancy ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ x: pupilX, y: pupilY }}
-      />
-      <motion.circle
-        cx={cx + r * 0.15}
-        cy={cy - r * 0.15}
-        r={r * 0.18}
-        fill="white"
-        animate={{ opacity: fancy ? 1 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ x: pupilX, y: pupilY }}
-      />
-      <motion.circle
-        cx={cx - r * 0.2}
-        cy={cy + r * 0.15}
-        r={r * 0.08}
-        fill="white"
-        animate={{ opacity: fancy ? 0.6 : 0 }}
-        transition={{ duration: 0.4 }}
-        style={{ x: pupilX, y: pupilY }}
-      />
+      {closed ? (
+        <>
+          <circle cx={cx} cy={cy} r={r * 1.2} fill="black" />
+          <path
+            d={closedPath}
+            fill="none"
+            stroke="white"
+            strokeWidth={r * 0.25}
+            strokeLinecap="round"
+          />
+        </>
+      ) : (
+        <>
+          <circle cx={cx} cy={cy} r={r * 1.3} fill="white" opacity="0.15" />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="white"
+            stroke="rgba(0,0,0,0.2)"
+            strokeWidth="2"
+          />
+          {/* Main pupil - always black */}
+          <motion.circle
+            cx={cx}
+            cy={cy}
+            r={r * 0.55}
+            fill="#111"
+            style={{ x: pupilX, y: pupilY }}
+          />
+          {/* Fancy details - fade in on hover */}
+          <motion.circle
+            cx={cx}
+            cy={cy}
+            r={r * 0.45}
+            fill="#3b2f1a"
+            animate={{ opacity: fancy ? 1 : 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ x: pupilX, y: pupilY }}
+          />
+          <motion.circle
+            cx={cx}
+            cy={cy}
+            r={r * 0.25}
+            fill="#000"
+            animate={{ opacity: fancy ? 1 : 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ x: pupilX, y: pupilY }}
+          />
+          <motion.circle
+            cx={cx + r * 0.15}
+            cy={cy - r * 0.15}
+            r={r * 0.18}
+            fill="white"
+            animate={{ opacity: fancy ? 1 : 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ x: pupilX, y: pupilY }}
+          />
+          <motion.circle
+            cx={cx - r * 0.2}
+            cy={cy + r * 0.15}
+            r={r * 0.08}
+            fill="white"
+            animate={{ opacity: fancy ? 0.6 : 0 }}
+            transition={{ duration: 0.4 }}
+            style={{ x: pupilX, y: pupilY }}
+          />
+        </>
+      )}
     </motion.g>
   );
 }
@@ -101,6 +121,7 @@ let particleId = 0;
 
 export default function FooterDog() {
   const [eyeScale, setEyeScale] = useState(1);
+  const [eyesClosed, setEyesClosed] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
 
   const mouseX = useMotionValue(0);
@@ -144,9 +165,9 @@ export default function FooterDog() {
     };
     const handleBoneDrop = () => {
       spawnParticles();
-      // Also make eyes go big briefly
-      setEyeScale(1.8);
-      setTimeout(() => setEyeScale(1), 1500);
+      // Close eyes happily for 1 second
+      setEyesClosed(true);
+      setTimeout(() => setEyesClosed(false), 1000);
     };
     window.addEventListener("dog-eyes-scale", handleEyeScale);
     window.addEventListener("dog-bone-drop", handleBoneDrop);
@@ -184,7 +205,7 @@ export default function FooterDog() {
       transition={{ duration: 1, delay: 0.3, ease }}
       style={{ x: springX, y: springY }}
       data-cursor="dog"
-      className="footer-dog absolute right-[-60px] bottom-[-20px] z-[2] hidden w-[260px] -rotate-[25deg] overflow-hidden lg:block"
+      className="footer-dog absolute right-[-60px] bottom-[-20px] z-[9999] w-[160px] -rotate-[25deg] overflow-hidden sm:w-[200px] lg:w-[260px]"
     >
       <img
         src="/images/dog.png"
@@ -197,8 +218,8 @@ export default function FooterDog() {
         viewBox="0 0 1000 1000"
         preserveAspectRatio="xMidYMid slice"
       >
-        <GooglyEye pupilX={pupilX} pupilY={pupilY} cx={325} cy={285} r={85} scale={eyeScale} fancy={eyeScale > 1} />
-        <GooglyEye pupilX={pupilX} pupilY={pupilY} cx={560} cy={345} r={85} scale={eyeScale} fancy={eyeScale > 1} />
+        <GooglyEye pupilX={pupilX} pupilY={pupilY} cx={325} cy={285} r={85} scale={eyeScale} fancy={eyeScale > 1} closed={eyesClosed} />
+        <GooglyEye pupilX={pupilX} pupilY={pupilY} cx={560} cy={345} r={85} scale={eyeScale} fancy={eyeScale > 1} closed={eyesClosed} />
       </svg>
 
       {/* Sparkle / heart particles on bone drop */}

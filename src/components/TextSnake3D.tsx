@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 
 const LABELS = [
   "B2B PAYMENT SYSTEM",
@@ -28,6 +28,19 @@ export default function TextSnake3D() {
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const activeStripes = useMemo(
+    () => (isMobile ? [STRIPES[0]] : STRIPES),
+    [isMobile]
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 2400);
@@ -72,8 +85,8 @@ export default function TextSnake3D() {
       const mx = smoothMouseRef.current.x;
       const my = smoothMouseRef.current.y;
 
-      for (let s = 0; s < STRIPES.length; s++) {
-        const stripe = STRIPES[s];
+      for (let s = 0; s < activeStripes.length; s++) {
+        const stripe = activeStripes[s];
         const els = charsRef.current[s];
         if (!els || !els.length) continue;
 
@@ -134,7 +147,7 @@ export default function TextSnake3D() {
 
     rafRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafRef.current);
-  }, []);
+  }, [activeStripes]);
 
   return (
     <div
@@ -147,7 +160,7 @@ export default function TextSnake3D() {
         transition: "opacity 1.2s ease",
       }}
     >
-      {STRIPES.map((_, s) =>
+      {activeStripes.map((_, s) =>
         FULL_TEXT.split("").map((char, i) => (
           <span
             key={`${s}-${i}`}

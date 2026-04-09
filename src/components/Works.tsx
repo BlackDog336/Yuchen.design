@@ -47,9 +47,9 @@ const tagIcons: Record<string, React.ReactNode> = {
 
 const projects: Project[] = [
   {
-    company: "CodePay . Fintech Startup",
+    company: "CodePay / Fintech Startup",
     title: "B2B Payment System",
-    date: "07/2025 - Now",
+    date: "July 2025 - Present",
     image: "/images/codepay.png",
     description:
       "Founding designer across CodePay\u2019s B2B payments suite (in-person solution + operations) \u2014 building a cross-product design system, refactoring high-trust workflows, and prototyping AI-first experiences.",
@@ -64,9 +64,9 @@ const projects: Project[] = [
     link: "/codepay",
   },
   {
-    company: "BonCamel . E-Commerce Startup",
+    company: "BonCamel / E-Commerce Startup",
     title: "Chat-based AI Agent",
-    date: "03/2024 - 05/2024",
+    date: "March 2024 - May 2024",
     image: "/images/boncamel.png",
     description:
       "Defined the end-to-end AI shopping flow (intent capture \u2192 recommendations \u2192 shortlist \u2192 checkout) and iterated through usability testing and A/B validation to improve purchase intent.",
@@ -81,9 +81,9 @@ const projects: Project[] = [
     link: "/novibox",
   },
   {
-    company: "DiDi . Mobility Platform",
+    company: "DiDi / Mobility Platform",
     title: "Autonomous Trucking",
-    date: "05/2024 - 07/2024",
+    date: "May 2024 - July 2024",
     image: "/images/phillytruce.png",
     description:
       "Designed fleet ops + HMI interactions for autonomous trucking \u2014 mapping dispatch-to-execution workflows and defining risk-aware UI patterns for safety-critical scenarios. Built prototypes and simulations to validate faster, and shipped iterative improvements with engineering in a tight build\u2013test loop.",
@@ -98,12 +98,12 @@ const projects: Project[] = [
     link: "/didi",
   },
   {
-    company: "Philly Truce . NGO of Community Safety",
+    company: "Philly Truce / Community Safety NGO",
     title: "Case Response Platform",
-    date: "11/2023 - 01/2024",
+    date: "November 2023 - January 2024",
     image: "/images/didi.png",
     description:
-      "Built a high-trust case response platform for rapid incident intake and triage \u2014 turning SMS reports into trackable cases with status, ownership, and resolution workflows.",
+      "Designed a high-trust case response platform for rapid incident intake and triage — turning SMS reports into trackable cases with status, ownership, and resolution workflows.",
     tags: [
       "Information Architecture",
       "Hierarchy & Progressive Disclosure",
@@ -213,20 +213,20 @@ export default function Works() {
                 </div>
 
                 {/* Text content */}
-                <div className="mt-6 lg:mt-0 lg:flex-1">
-                  <p className="font-mono text-[14px] uppercase tracking-[0.1em] text-white/50">
+                <div className="mt-16 lg:mt-0 lg:flex-1">
+                  <p className="font-mono text-[13px] uppercase tracking-[0.15em] text-white/40">
                     {project.company}
                   </p>
 
-                  <h3 className="mt-2 inline font-serif text-[36px] font-normal leading-[1.2] tracking-[-0.5px] text-white lg:text-[42px]">
+                  <h3 className="mt-2 font-serif text-[36px] font-normal leading-[1.2] tracking-[-0.5px] text-white lg:text-[42px]">
                     {project.title}
                   </h3>
 
-                  <p className="mt-3 font-mono text-[14px] tracking-[0.05em] text-white/50">
+                  <p className="mt-2 font-mono text-[13px] tracking-[0.05em] text-white/35">
                     {project.date}
                   </p>
 
-                  <p className="mt-4 font-sans text-[17px] leading-[1.7] tracking-[-0.17px] text-white lg:text-[20px]">
+                  <p className="mt-2 font-sans text-[17px] leading-[1.7] tracking-[-0.17px] text-white/70 lg:text-[20px]">
                     {project.description}
                   </p>
                 </div>

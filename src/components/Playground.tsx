@@ -176,9 +176,9 @@ export default function Playground() {
   }, []);
 
   return (
-    <section id="playground" className="relative z-10 px-8 py-12 sm:px-8 md:py-16 lg:px-12">
+    <section id="playground" className="relative z-10 px-0 py-12 sm:px-8 md:py-16 lg:px-12">
       <div
-        className="relative mx-auto overflow-hidden rounded-[36px] px-10 py-20 sm:px-12 md:py-32 lg:px-16 animate-gradient-shift"
+        className="relative mx-auto overflow-hidden rounded-none px-6 py-20 sm:rounded-[36px] sm:px-12 md:py-32 lg:px-16 animate-gradient-shift"
         onMouseMove={handleMouseMove}
         style={{
           background: "linear-gradient(135deg, #d44a1a, #e8662a, #f5903c, #ffb366, #f5903c, #e8662a, #c23a10, #d44a1a)",

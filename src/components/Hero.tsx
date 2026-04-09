@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Starfield from "./Starfield";
+import YuchenMorph from "./YuchenMorph";
 import dynamic from "next/dynamic";
 
 const TextSnake3D = dynamic(() => import("./TextSnake3D"), { ssr: false });
@@ -44,7 +45,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.12 }}
         transition={{ duration: 1.5, delay: 2.2, ease }}
-        className="pointer-events-none absolute -inset-8 z-[5] animate-grain transition-transform duration-300 ease-out"
+        className="pointer-events-none absolute -inset-8 z-[2] animate-grain transition-transform duration-300 ease-out"
         style={{ transform: "translate(var(--gx, 0px), var(--gy, 0px))" }}
       />
 
@@ -110,7 +111,7 @@ export default function Hero() {
       <TextSnake3D />
 
       {/* Main content — centered */}
-      <div className="relative z-[3] flex w-full max-w-[650px] flex-col items-start text-left">
+      <div className="relative z-[7] flex w-full max-w-[650px] flex-col items-start text-left">
         {/* Phase 3: Text animations after sun + glow (2.0s+) */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -128,17 +129,7 @@ export default function Hero() {
           className="mt-6 font-serif text-[42px] leading-[1.15] font-normal tracking-[-1.5px] text-white sm:text-[56px] lg:text-[68px]"
         >
           Hi, I&apos;m{" "}
-          <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-accent via-[#ffb366] to-accent bg-clip-text text-transparent">
-              Yuchen
-            </span>
-            <motion.span
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 2.8, ease }}
-              className="absolute -bottom-1 left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-accent to-[#ffb366]"
-            />
-          </span>
+          <YuchenMorph />
         </motion.h1>
 
         {/* Word-by-word reveal */}
@@ -162,7 +153,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 3.0, ease }}
           className="mt-6 font-satoshi text-[16px] leading-[1.4] tracking-[-0.3px] text-white/40 sm:text-[18px]"
         >
-          @ CodePay &middot; NYC &middot; Open to opportunities
+          Project Manager @ CodePay | NYC
         </motion.p>
 
         {/* CTA buttons */}
