@@ -19,6 +19,7 @@ const hobbyText =
 
 export default function Story() {
   const [activeTab, setActiveTab] = useState<Tab>("My Vision");
+  const [svgKey, setSvgKey] = useState(0);
   const sectionRefs = useRef<Record<Tab, HTMLDivElement | null>>({
     "My Vision": null,
     "My Work Style": null,
@@ -26,6 +27,13 @@ export default function Story() {
   });
   const borderRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+
+  // Force SVG re-render on resize so text border fits new aspect ratio
+  useEffect(() => {
+    const onResize = () => setSvgKey((k) => k + 1);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   // Continuous text-path animation + scroll boost
   useEffect(() => {
@@ -64,7 +72,7 @@ export default function Story() {
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [svgKey]);
 
   // 3D tilt tracks cursor globally when image+border is in viewport
   useEffect(() => {
@@ -118,7 +126,7 @@ export default function Story() {
   }, []);
 
   return (
-    <section id="story" className="px-5 pt-24 pb-16 sm:px-8 lg:px-16 lg:pt-[160px]">
+    <section id="story" className="px-8 pt-24 pb-16 sm:px-8 lg:px-16 lg:pt-[160px]">
       <div className="mx-auto max-w-[1200px]">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -211,11 +219,12 @@ export default function Story() {
               </p>
               <div
                 ref={borderRef}
-                className="relative mt-8 p-5 transition-transform duration-300 ease-out will-change-transform sm:p-7 lg:p-10"
+                className="relative mt-16 p-5 transition-transform duration-300 ease-out will-change-transform sm:p-7 lg:p-10"
                 style={{ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" }}
               >
                 {/* Continuous flowing text border */}
                 <svg
+                  key={svgKey}
                   ref={svgRef}
                   className="pointer-events-none absolute inset-0 h-full w-full"
                   viewBox="0 0 100 100"

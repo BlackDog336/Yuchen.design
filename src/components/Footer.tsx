@@ -44,7 +44,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative overflow-hidden px-8 pb-16 pt-32 lg:px-16">
+    <footer className="relative overflow-hidden px-8 pb-16 pt-12 lg:px-16 lg:pt-20">
       <FooterDog />
       {/* Big CTA */}
       <motion.div
@@ -170,7 +170,7 @@ export default function Footer() {
           animate={{ opacity: 1, y: 0 }}
           style={{ scale: boneScale }}
           data-cursor="bone"
-          className="absolute bottom-4 left-4 z-20 cursor-grab select-none text-2xl active:cursor-grabbing"
+          className="absolute bottom-4 left-8 z-20 cursor-grab select-none text-2xl active:cursor-grabbing lg:left-16"
           title="Drag me to the dog!"
         >
           <motion.span
