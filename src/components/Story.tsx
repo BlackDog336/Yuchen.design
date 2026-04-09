@@ -311,8 +311,8 @@ export default function Story() {
                   className="relative aspect-[1/1] w-full overflow-hidden rounded-[16px] sm:rounded-[28px] lg:rounded-[36px]"
                 >
                   <Image
-                    src="/images/naibaov2.jpeg"
-                    alt="milkdog"
+                    src="/images/me.jpeg"
+                    alt="Yuchen"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 635px"
