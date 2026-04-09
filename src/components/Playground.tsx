@@ -148,14 +148,14 @@ const PlaygroundCard = React.memo(function PlaygroundCard({ project, index }: { 
 
         {/* Button – hidden by default, fades + slides up after description */}
         <div className="mt-0 max-h-0 translate-y-4 overflow-hidden opacity-0 transition-all duration-500 ease-out [transition-delay:150ms] group-hover:mt-5 group-hover:max-h-[60px] group-hover:translate-y-0 group-hover:opacity-100">
-          <span data-cursor="pill" className="group/btn relative inline-flex items-center overflow-hidden rounded-full border-2 border-[#1e2a78] bg-[#1e2a78] py-[3px] pl-5 pr-[3px] transition-[border-color] duration-600 ease-out hover:border-[#ffb347]">
+          <span data-cursor="pill" className="group/btn relative inline-flex items-center overflow-hidden rounded-full border border-white/20 bg-white/10 py-[3px] pl-5 pr-[3px] backdrop-blur-md transition-[border-color,background-color] duration-600 ease-out hover:border-[#ffb347] hover:bg-accent/80">
             {/* White ball that expands to fill, then turns orange */}
-            <span className="absolute right-[3px] top-1/2 h-[32px] w-[32px] -translate-y-1/2 rounded-full bg-white transition-all duration-500 ease-out group-hover/btn:right-1/2 group-hover/btn:h-[300%] group-hover/btn:w-[300%] group-hover/btn:translate-x-1/2 group-hover/btn:bg-accent" />
+            <span className="absolute right-[3px] top-1/2 h-[32px] w-[32px] -translate-y-1/2 rounded-full bg-white/20 transition-all duration-500 ease-out group-hover/btn:right-1/2 group-hover/btn:h-[300%] group-hover/btn:w-[300%] group-hover/btn:translate-x-1/2 group-hover/btn:bg-accent" />
             <span className="relative z-10 pr-2.5 font-sans text-[14px] font-medium text-white">
               Take a look
             </span>
             <span className="relative z-10 flex h-[32px] w-[32px] items-center justify-center">
-              <span className="text-[15px] text-[#1e2a78] transition-all duration-500 ease-out group-hover/btn:rotate-[360deg] group-hover/btn:text-white">&rarr;</span>
+              <svg className="h-[14px] w-[14px] text-white transition-all duration-500 ease-out group-hover/btn:rotate-[360deg]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </span>
           </span>
         </div>
