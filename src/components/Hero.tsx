@@ -22,6 +22,10 @@ export default function Hero() {
       const rect = section.getBoundingClientRect();
       section.style.setProperty("--mx", `${e.clientX - rect.left}px`);
       section.style.setProperty("--my", `${e.clientY - rect.top}px`);
+      const gx = ((e.clientX - rect.left) / rect.width - 0.5) * 30;
+      const gy = ((e.clientY - rect.top) / rect.height - 0.5) * 30;
+      section.style.setProperty("--gx", `${gx}px`);
+      section.style.setProperty("--gy", `${gy}px`);
     };
     section.addEventListener("mousemove", handleMove);
     return () => section.removeEventListener("mousemove", handleMove);
@@ -36,36 +40,23 @@ export default function Hero() {
       <Starfield />
 
       {/* Full-screen grain texture */}
-      <div className="pointer-events-none absolute inset-0 z-[5] animate-grain opacity-[0.12]" />
-
-      {/* Animated gradient orbs */}
-      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
-        <div
-          className="absolute -right-[20%] -top-[20%] h-[70vh] w-[70vh] animate-orb-drift-1 rounded-full opacity-[0.12] blur-[120px]"
-          style={{ background: "radial-gradient(circle, #ff8c42 0%, #d44a1a 40%, transparent 70%)" }}
-        />
-        <div
-          className="absolute -bottom-[15%] -left-[15%] h-[60vh] w-[60vh] animate-orb-drift-2 rounded-full opacity-[0.10] blur-[100px]"
-          style={{ background: "radial-gradient(circle, #ffcc00 0%, #ff8c42 40%, transparent 70%)" }}
-        />
-        <div
-          className="absolute left-[30%] top-[40%] h-[50vh] w-[50vh] animate-orb-drift-3 rounded-full opacity-[0.08] blur-[100px]"
-          style={{ background: "radial-gradient(circle, #1a6a7c 0%, #0a1628 40%, transparent 70%)" }}
-        />
-        <div
-          className="absolute -bottom-[10%] right-[10%] h-[40vh] w-[40vh] animate-orb-drift-4 rounded-full opacity-[0.10] blur-[80px]"
-          style={{ background: "radial-gradient(circle, #ffb366 0%, #ff6b35 40%, transparent 70%)" }}
-        />
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.12 }}
+        transition={{ duration: 1.5, delay: 2.2, ease }}
+        className="pointer-events-none absolute -inset-8 z-[5] animate-grain transition-transform duration-300 ease-out"
+        style={{ transform: "translate(var(--gx, 0px), var(--gy, 0px))" }}
+      />
 
       {/* Cursor glow */}
       <div
-        className="pointer-events-none absolute z-[2] h-[400px] w-[400px] rounded-full opacity-[0.06] blur-[80px] transition-opacity duration-500"
+        className="pointer-events-none absolute z-[2] h-[400px] w-[400px] rounded-full opacity-[0.06] blur-[80px]"
         style={{
           background: "radial-gradient(circle, #ff8c42, transparent 70%)",
-          left: "var(--mx, 50%)",
-          top: "var(--my, 50%)",
+          left: "var(--mx, -9999px)",
+          top: "var(--my, -9999px)",
           transform: "translate(-50%, -50%)",
+          transition: "left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       />
 
@@ -75,7 +66,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: "-40%" }}
         animate={{ opacity: 1, y: "0%" }}
         transition={{ duration: 1.4, delay: 0.2, ease }}
-        className="absolute left-1/2 top-0 z-[2] -translate-x-1/2 -translate-y-3/4"
+        className="absolute left-1/2 top-0 z-[6] -translate-x-1/2 -translate-y-3/4"
         style={{ width: "50vw", height: "50vw" }}
       >
         {/* Phase 2: Glow expands after sun arrives (1.0s – 2.2s) */}

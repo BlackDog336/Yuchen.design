@@ -95,12 +95,20 @@ export default function Starfield() {
 
     // --- Draw ---
     let lastTime = 0;
+    const FADE_IN_DURATION = 1800; // ms
+    let fadeStart = 0;
 
     function draw(time: number) {
+      if (!fadeStart) fadeStart = time;
       const dt = lastTime ? (time - lastTime) / 16.67 : 1; // normalise to ~60fps
       lastTime = time;
 
+      // Global fade-in
+      const fadeProgress = Math.min((time - fadeStart) / FADE_IN_DURATION, 1);
+      const globalAlpha = fadeProgress * fadeProgress; // ease-in quadratic
+
       ctx.clearRect(0, 0, w, h);
+      ctx.globalAlpha = globalAlpha;
 
       const t = time * 0.001;
 
@@ -185,6 +193,7 @@ export default function Starfield() {
         ctx.fill();
       }
 
+      ctx.globalAlpha = 1;
       animId = requestAnimationFrame(draw);
     }
 
