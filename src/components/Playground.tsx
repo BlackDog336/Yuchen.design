@@ -19,29 +19,29 @@ const projects: Project[] = [
     title: "Magic Diary \u00b7 AI Journaling Companion (Gamification)",
     description:
       "Designed a narrative, object-based navigation system and Lottie-powered interaction loop that turns journaling into a playful \u201cpotion-making\u201d experience.",
-    image: "/images/magic-diary.png",
-    link: "#",
+    image: "/images/magic-diary.svg",
+    link: "https://drive.google.com/file/d/1QrfPZEc8KEO4N3ytfHBGYmvJohhwtbCb/view?usp=sharing",
   },
   {
     title: "AR Try-On Lens for Sustainable Fashion (200k Plays)",
     description:
       "Built a 3D-to-AR virtual try-on Lens for sustainable fashion on Snapchat, reaching 200k+ total plays/views.",
-    image: "/images/ar-tryon.png",
-    link: "#",
+    image: "/images/ar-tryon.svg",
+    link: "https://creator.snapchat.com/creator/67D-fbK5xxmfPrKV5idmPA",
   },
   {
     title: "Interactive Data Visualization (30k+ entries)",
     description:
       "Built a web-based interactive data explorer for 30k+ material records to surface patterns and support faster comparison, filtering, and insight discovery.",
-    gradient: "conic-gradient(#fff 0deg, #ffa640 180deg, #fc8f4c 360deg)",
-    link: "#",
+    image: "/images/data-viz.svg",
+    link: "https://public.flourish.studio/visualisation/6037305/",
   },
   {
     title: "p5.js Experiments",
     description:
       "A curated set of interactive p5.js sketches exploring motion, data storytelling, and rapid prototyping.",
-    gradient: "conic-gradient(#ffce8f 0deg, #e65c12 215.676deg, #ff1c1c 360deg)",
-    link: "#",
+    image: "/images/p5js.svg",
+    link: "https://editor.p5js.org/Yochen/sketches",
   },
 ];
 
@@ -68,6 +68,8 @@ const PlaygroundCard = React.memo(function PlaygroundCard({ project, index }: { 
     <motion.a
       ref={cardRef}
       href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-60px" }}

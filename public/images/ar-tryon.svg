@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#0f2035"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fa8e41" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#fa5c40" stop-opacity="0.18"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg2)"/>
+
+  <!-- Subtle grid (AR reference) -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="0.5">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="100" y1="0" x2="100" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="500" y1="0" x2="500" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="700" y1="0" x2="700" y2="600"/>
+  </g>
+
+  <!-- Perspective grid lines converging -->
+  <g stroke="#fa8e41" stroke-opacity="0.06" stroke-width="0.5">
+    <line x1="400" y1="250" x2="0" y2="0"/>
+    <line x1="400" y1="250" x2="800" y2="0"/>
+    <line x1="400" y1="250" x2="0" y2="600"/>
+    <line x1="400" y1="250" x2="800" y2="600"/>
+    <line x1="400" y1="250" x2="0" y2="300"/>
+    <line x1="400" y1="250" x2="800" y2="300"/>
+    <line x1="400" y1="250" x2="400" y2="0"/>
+    <line x1="400" y1="250" x2="400" y2="600"/>
+  </g>
+
+  <!-- Ambient glow -->
+  <circle cx="400" cy="250" r="200" fill="#fa5c40" opacity="0.07" filter="url(#glow2)"/>
+  <circle cx="400" cy="250" r="100" fill="#ffb366" opacity="0.05" filter="url(#glow2)"/>
+
+  <!-- Sunglasses frame -->
+  <g transform="translate(400, 240)">
+    <!-- Bridge -->
+    <path d="M-30,0 Q0,-15 30,0" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-opacity="0.65" stroke-linecap="round"/>
+    <!-- Left frame -->
+    <path d="M-30,0 Q-40,-5 -60,-5 Q-130,-5 -140,30 Q-150,70 -110,80 Q-70,90 -40,70 Q-20,55 -30,0 Z" fill="url(#lens)" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55"/>
+    <!-- Right frame -->
+    <path d="M30,0 Q40,-5 60,-5 Q130,-5 140,30 Q150,70 110,80 Q70,90 40,70 Q20,55 30,0 Z" fill="url(#lens)" stroke="#ffffff" stroke-width="2" stroke-opacity="0.55"/>
+    <!-- Temple arms -->
+    <path d="M-140,20 L-190,5" stroke="#ffffff" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+    <path d="M140,20 L190,5" stroke="#ffffff" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+    <!-- Lens reflections -->
+    <path d="M-100,15 Q-80,10 -60,20" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.25"/>
+    <path d="M60,15 Q80,10 100,20" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.25"/>
+    <!-- Lens inner glow -->
+    <ellipse cx="-85" cy="40" rx="40" ry="30" fill="#fa8e41" opacity="0.08" filter="url(#glow3)"/>
+    <ellipse cx="85" cy="40" rx="40" ry="30" fill="#fa8e41" opacity="0.08" filter="url(#glow3)"/>
+  </g>
+
+  <!-- AR scan lines / tracking points -->
+  <g>
+    <!-- Corner brackets (AR tracking UI) -->
+    <g stroke="#fa8e41" stroke-width="1.8" stroke-opacity="0.45">
+      <path d="M180,120 L180,145 L205,145" fill="none"/>
+      <path d="M620,120 L620,145 L595,145" fill="none"/>
+      <path d="M180,400 L180,375 L205,375" fill="none"/>
+      <path d="M620,400 L620,375 L595,375" fill="none"/>
+    </g>
+    <!-- Tracking dots -->
+    <circle cx="250" cy="180" r="3.5" fill="#fa8e41" opacity="0.55"/>
+    <circle cx="250" cy="180" r="8" fill="#fa8e41" opacity="0.1" filter="url(#glow3)"/>
+    <circle cx="550" cy="180" r="3.5" fill="#fa8e41" opacity="0.55"/>
+    <circle cx="550" cy="180" r="8" fill="#fa8e41" opacity="0.1" filter="url(#glow3)"/>
+    <circle cx="300" cy="350" r="3" fill="#ffb366" opacity="0.45"/>
+    <circle cx="500" cy="350" r="3" fill="#ffb366" opacity="0.45"/>
+    <circle cx="400" cy="160" r="2.5" fill="#ffffff" opacity="0.35"/>
+    <circle cx="400" cy="380" r="2.5" fill="#ffffff" opacity="0.25"/>
+  </g>
+
+  <!-- Floating fashion elements -->
+  <g opacity="0.15" fill="none" stroke="#ffffff" stroke-width="1.2">
+    <!-- Hanger -->
+    <path d="M650,430 L680,460 L710,430" stroke-opacity="0.35"/>
+    <circle cx="680" cy="425" r="5" stroke-opacity="0.35"/>
+    <!-- Dress silhouette -->
+    <path d="M665,460 Q665,490 655,520 L705,520 Q695,490 695,460 Z" stroke-opacity="0.2" fill="#ffffff" fill-opacity="0.03"/>
+  </g>
+
+  <!-- Fabric swatch (bottom-left) -->
+  <g transform="translate(100, 440) rotate(-8)">
+    <rect width="65" height="80" rx="6" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.12"/>
+    <line x1="10" y1="15" x2="55" y2="15" stroke="#fa8e41" stroke-width="0.5" stroke-opacity="0.15"/>
+    <line x1="10" y1="25" x2="55" y2="25" stroke="#fa8e41" stroke-width="0.5" stroke-opacity="0.12"/>
+    <line x1="10" y1="35" x2="55" y2="35" stroke="#fa8e41" stroke-width="0.5" stroke-opacity="0.1"/>
+  </g>
+
+  <!-- Scan line effect -->
+  <rect x="160" y="248" width="480" height="1.5" fill="#fa8e41" opacity="0.18"/>
+  <rect x="160" y="248" width="480" height="1.5" fill="#fa8e41" opacity="0.06" filter="url(#glow3)"/>
+
+  <!-- Small sparkle dots -->
+  <g fill="#ffb366" opacity="0.35">
+    <circle cx="320" cy="200" r="1.5"/>
+    <circle cx="480" cy="200" r="1.5"/>
+    <circle cx="350" cy="310" r="1.5"/>
+    <circle cx="450" cy="310" r="1.5"/>
+    <circle cx="200" cy="300" r="1.5"/>
+    <circle cx="600" cy="300" r="1.5"/>
+  </g>
+</svg>

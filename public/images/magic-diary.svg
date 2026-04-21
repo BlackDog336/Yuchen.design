@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="50%" stop-color="#2d1b4e"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="potion1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fa8e41"/>
+      <stop offset="100%" stop-color="#fa5c40"/>
+    </linearGradient>
+    <linearGradient id="potion2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffb366"/>
+      <stop offset="100%" stop-color="#e8662a"/>
+    </linearGradient>
+    <linearGradient id="glow1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fa8e41" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fa5c40" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg1)"/>
+
+  <!-- Ambient glow orbs -->
+  <circle cx="200" cy="300" r="150" fill="#fa5c40" opacity="0.08" filter="url(#blur1)"/>
+  <circle cx="600" cy="200" r="120" fill="#ffb366" opacity="0.1" filter="url(#blur1)"/>
+  <circle cx="400" cy="450" r="180" fill="#fa8e41" opacity="0.06" filter="url(#blur1)"/>
+
+  <!-- Large potion bottle (center-left) -->
+  <g transform="translate(240, 140)">
+    <!-- Bottle neck -->
+    <rect x="45" y="0" width="30" height="40" rx="4" fill="#ffffff" opacity="0.15"/>
+    <rect x="40" y="30" width="40" height="12" rx="3" fill="#ffffff" opacity="0.2"/>
+    <!-- Bottle body -->
+    <path d="M40,42 Q10,80 10,160 Q10,220 60,220 Q110,220 110,160 Q110,80 80,42 Z" fill="#ffffff" opacity="0.1" stroke="#ffffff" stroke-opacity="0.2" stroke-width="1"/>
+    <!-- Liquid -->
+    <path d="M18,130 Q18,210 60,210 Q102,210 102,130 Q80,120 60,135 Q40,120 18,130 Z" fill="url(#potion1)" opacity="0.8"/>
+    <!-- Bubbles -->
+    <circle cx="45" cy="170" r="6" fill="#ffb366" opacity="0.5"/>
+    <circle cx="70" cy="155" r="4" fill="#ffffff" opacity="0.4"/>
+    <circle cx="55" cy="185" r="3" fill="#ffffff" opacity="0.3"/>
+    <!-- Glow from bottle -->
+    <ellipse cx="60" cy="220" rx="50" ry="20" fill="#fa5c40" opacity="0.3" filter="url(#blur2)"/>
+  </g>
+
+  <!-- Small round flask (right) -->
+  <g transform="translate(480, 200)">
+    <rect x="35" y="0" width="20" height="30" rx="3" fill="#ffffff" opacity="0.15"/>
+    <circle cx="45" cy="80" r="55" fill="#ffffff" opacity="0.08" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+    <!-- Liquid -->
+    <path d="M-2,90 Q-2,130 45,130 Q92,130 92,90 Q70,80 45,95 Q20,80 -2,90 Z" fill="url(#potion2)" opacity="0.7"/>
+    <circle cx="30" cy="105" r="4" fill="#ffffff" opacity="0.3"/>
+    <circle cx="55" cy="110" r="3" fill="#ffb366" opacity="0.4"/>
+    <ellipse cx="45" cy="130" rx="40" ry="15" fill="#ffb366" opacity="0.2" filter="url(#blur2)"/>
+  </g>
+
+  <!-- Sparkles / stars scattered -->
+  <g fill="#ffb366">
+    <!-- 4-point stars -->
+    <path d="M150,100 L153,108 L160,110 L153,112 L150,120 L147,112 L140,110 L147,108 Z" opacity="0.7"/>
+    <path d="M580,120 L582,126 L588,128 L582,130 L580,136 L578,130 L572,128 L578,126 Z" opacity="0.5"/>
+    <path d="M680,350 L683,358 L690,360 L683,362 L680,370 L677,362 L670,360 L677,358 Z" opacity="0.6"/>
+    <path d="M120,400 L122,406 L128,408 L122,410 L120,416 L118,410 L112,408 L118,406 Z" opacity="0.4"/>
+    <path d="M350,80 L352,85 L357,87 L352,89 L350,94 L348,89 L343,87 L348,85 Z" opacity="0.5"/>
+  </g>
+
+  <!-- Small dots / particles -->
+  <g fill="#fa8e41" opacity="0.4">
+    <circle cx="300" cy="120" r="2"/>
+    <circle cx="500" cy="380" r="2"/>
+    <circle cx="650" cy="250" r="1.5"/>
+    <circle cx="180" cy="480" r="2"/>
+    <circle cx="420" cy="60" r="1.5"/>
+    <circle cx="700" cy="450" r="2"/>
+    <circle cx="100" cy="250" r="1.5"/>
+  </g>
+
+  <!-- Swirl / magic trail -->
+  <path d="M200,350 Q300,300 350,350 Q400,400 500,340 Q580,290 650,330" fill="none" stroke="#fa8e41" stroke-width="1.5" stroke-opacity="0.25" stroke-dasharray="8,6"/>
+  <path d="M150,420 Q250,380 320,430 Q400,480 480,420 Q560,370 650,400" fill="none" stroke="#ffb366" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="6,8"/>
+
+  <!-- Book / diary element (bottom left) -->
+  <g transform="translate(80, 380) rotate(-15)">
+    <rect x="0" y="0" width="100" height="130" rx="6" fill="#ffffff" opacity="0.06" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+    <line x1="15" y1="30" x2="85" y2="30" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <line x1="15" y1="50" x2="75" y2="50" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+    <line x1="15" y1="70" x2="80" y2="70" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+    <!-- Bookmark -->
+    <path d="M70,0 L70,40 L78,32 L86,40 L86,0" fill="#fa5c40" opacity="0.4"/>
+  </g>
+</svg>
